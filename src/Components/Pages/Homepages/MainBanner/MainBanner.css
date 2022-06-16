@@ -1,0 +1,41 @@
+.main-banner{
+    background-image: url('https://meditro.themetrades.com/react/static/media/bg1.c53c8971.jpg');
+    height: 500px !important;
+}
+
+.main-banner .bg1{
+    position: relative !important;
+    top: 50px !important;
+    left: 250px !important;
+}
+.main-banner .bg2{
+    position: relative !important;
+    top: 400px !important;
+    left: -500px !important;
+}
+.main-banner .bg3{
+    position: relative !important;
+    top: 20px !important;
+    left: -400px !important;
+}
+.main-banner .bg4{
+    position: relative !important;
+    top: 500px !important;
+    left: -20px !important;
+}
+.main-banner .bg5{
+    position: relative !important;
+    top: 300px !important;
+    right: -300px !important;
+}
+
+
+@media screen and (max-width:360px) {
+    .main-banner{
+        height: 100% !important;
+    }
+    .main-banner .bg1,.bg2,.bg3,.bg4,.bg5{
+
+        display: none !important;
+    }
+}

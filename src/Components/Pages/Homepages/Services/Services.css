@@ -1,0 +1,20 @@
+.services-top-box{
+    background-image: url('https://medi-dove.netlify.app/static/media/page-bg.19c1fbc541073bd8ef07.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: fit-content;
+    margin-top: 3rem;
+    padding: 50px;
+}
+
+.top-container-box{
+    padding: 5rem;
+}
+
+
+@media screen and (max-width: 360px) {
+    
+    .top-container-box{
+        padding: 0;
+    }
+}

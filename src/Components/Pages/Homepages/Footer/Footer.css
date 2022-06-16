@@ -1,0 +1,31 @@
+.footer{
+    background-image: url('https://meditro.themetrades.com/react/static/media/footer.d025f458.jpg');
+    height: 35rem;
+    margin-top: 5rem;
+    /* padding-bottom: 15px !important; */
+}
+
+.footer-h1{
+    color: #1F2278;
+    /* text-align: left !important; */
+}
+/* .footer-h1::after{
+    content: "";
+    background-image: url('../../../../images/footre-after-title.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    width: 300px;
+} */
+
+
+@media screen and (max-width: 360px) {
+    .footer{
+        background-image: url('https://meditro.themetrades.com/react/static/media/footer.d025f458.jpg');
+        height: fit-content;
+        /* background-repeat: no-repeat; */
+        margin-top: 5rem;
+        padding-bottom: 15px !important;
+        text-align: center;
+    }
+}
+    

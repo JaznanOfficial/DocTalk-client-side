@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Body Surgery",
+        "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+        "img": "https://medi-dove.netlify.app/img/services/service1.png"
+    },
+    {
+        "name": "Dental Care",
+        "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+        "img": "https://medi-dove.netlify.app/img/services/service2.png"
+    },
+    
+    {
+        "name": "Eye Test",
+        "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+        "img": "https://medi-dove.netlify.app/img/services/service3.png"
+    },
+    {
+        "name": "Blod Cancer",
+        "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+        "img": "https://medi-dove.netlify.app/img/services/service4.png"
+    },
+    {
+        "name": "Neurology Surgery",
+        "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+        "img": "https://medi-dove.netlify.app/img/services/service5.png"
+    },
+    {
+        "name": "Allergy Treatment",
+        "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
+        "img": "https://medi-dove.netlify.app/img/services/service6.png"
+    }
+]

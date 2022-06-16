@@ -1,0 +1,26 @@
+.header-right-box img{
+    position: relative !important;
+    top: -100px !important;
+}
+
+
+
+
+@media screen and (max-width: 360px) {
+    /* .main-banner{
+        background-image: url('https://meditro.themetrades.com/react/static/media/bg1.c53c8971.jpg');
+        height: 500px !important;
+    } */
+    .header-main-grid{
+        flex-direction: column-reverse !important;
+    }
+   .header-right-box img{
+ width: 300px !important;   
+ top: 30px !important;
+    }
+    .header-left-box{
+        text-align: center !important;
+    }
+
+    }
+ 

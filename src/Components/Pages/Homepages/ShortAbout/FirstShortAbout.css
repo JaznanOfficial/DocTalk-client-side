@@ -1,0 +1,31 @@
+.short-about{
+    margin-bottom: 10rem !important;
+}
+
+.short-about p{
+    margin:10px !important;
+    /* margin-left: 50px !important; */
+    text-align:justify !important;
+}
+
+@media screen and (max-width: 360px) {
+    
+    .short-about{
+        margin-bottom: 5rem !important;
+    }
+
+    .short-about .first-grid-shortAbout{
+        display:none;
+    }
+    .short-about h1{
+        text-align:center !important;
+    }
+    .short-about h4{
+        text-align:center !important;
+    }
+    .short-about p{
+        /* margin:10px !important; */
+        /* margin-left: 0 !important; */
+        text-align:justify !important;
+    }
+}
