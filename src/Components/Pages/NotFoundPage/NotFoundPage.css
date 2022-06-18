@@ -2,6 +2,7 @@
     background-image: url('https://meditro.themetrades.com/react/static/media/img1.815eb17a.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 50rem;
+    /* height: 50rem; */
     margin: 0 auto;
+    padding-bottom: 3rem;
 }
