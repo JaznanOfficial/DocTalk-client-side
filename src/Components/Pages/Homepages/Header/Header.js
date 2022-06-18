@@ -42,7 +42,7 @@ const Header = () => {
                                 Take Care To Of Your <br />
                                 Health
                             </h1>
-                            <Link to="about">
+                            <Link to="/about">
                                 <Button
                                     variant="contained"
                                     color="primary"

@@ -26,15 +26,16 @@ const SingleService = () => {
     display: block;
     margin: 0 auto;
     border-color: red;
-    `;
+    `
 
     return (
         <div>
-        {loading && <ClockLoader color='#FF6F00' size={'300'} loading={true} css={override} display={'block'} />}
+        {loading && <ClockLoader color='#E12454' size={'300'} loading={true} css={override}  display={'block'} />}
         {error && <div>Error: {error.message}</div>}
 
 
-        <Container className="single-service-container" style={{ padding: "5rem" }}>
+        
+            <Container className="single-service-container" style={{ padding: "5rem" }}>
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {
                         data.map(singleData => {
@@ -68,6 +69,7 @@ const SingleService = () => {
                 }
             </Grid>
         </Container>
+       
     </div>
     );
 };

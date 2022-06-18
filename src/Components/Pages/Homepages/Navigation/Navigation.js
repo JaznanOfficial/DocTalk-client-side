@@ -69,9 +69,9 @@ const Navigation = () => {
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <Box sx={{display:'flex', flexDirection:'column'}} className='responsive-menu-bar'>
                                 <NavLink to="home">Home</NavLink>
-                                <NavLink to="booking">My Booking</NavLink>
                                 <NavLink to="services">Services</NavLink>
                                 <NavLink to="contact">Contact us</NavLink>
+                                <NavLink to="booking">My Booking</NavLink>
                                 </Box>
                             </MenuItem>
                         </Menu>
