@@ -71,7 +71,7 @@ const Navigation = () => {
                                 <NavLink to="home">Home</NavLink>
                                 <NavLink to="services">Services</NavLink>
                                 <NavLink to="contact">Contact us</NavLink>
-                                <NavLink to="booking">My Booking</NavLink>
+                                <NavLink to="join">Join as a doctor</NavLink>
                                 </Box>
                             </MenuItem>
                         </Menu>
@@ -92,7 +92,7 @@ const Navigation = () => {
                         <NavLink to="services">Services</NavLink>
                         <NavLink to="about">About Us</NavLink>
                         <NavLink to="contact">Contact us</NavLink>
-                        <NavLink to="booking">My Booking</NavLink>
+                        <NavLink to="join">Join as a doctor</NavLink>
                     </Box>
 
                     <Box sx={{ flexGrow: { xs: 1, md: 0 } }}>
@@ -122,8 +122,8 @@ const Navigation = () => {
                                 <MenuItem onClick={handleCloseUserMenu} >
                                 <Box sx={{display:'flex', flexDirection:'column'}} className='responsive-menu-bar'>
                                 <NavLink to="profile">Profile</NavLink>
-                                <NavLink to="account">Account</NavLink>
-                                <NavLink to="dashboard">Dashboard</NavLink>
+                                <NavLink to="patient-booking">My Booking</NavLink>
+                                
                                 <NavLink to="logout">Log Out</NavLink>
                                 </Box>
                                 </MenuItem>
