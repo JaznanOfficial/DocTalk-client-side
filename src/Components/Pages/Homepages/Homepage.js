@@ -4,6 +4,7 @@ import MainBanner from './MainBanner/MainBanner';
 import Services from './Services/Services';
 import FirstShortAbout from './ShortAbout/FirstShortAbout';
 import SecondShortAbout from './ShortAbout/SecondShortAbout';
+import SingleService from './SingleService/SingleService';
 
 
 const Homepage = () => {
@@ -13,7 +14,7 @@ const Homepage = () => {
             <FirstShortAbout></FirstShortAbout>
             <SecondShortAbout></SecondShortAbout>
             <Services></Services>
-            
+            <SingleService></SingleService>
             <Footer></Footer>
         </div>
     );

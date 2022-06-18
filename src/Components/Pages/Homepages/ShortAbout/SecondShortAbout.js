@@ -4,7 +4,7 @@ import { Box, Container, Grid } from "@mui/material";
 
 const SecondShortAbout = () => {
     return (
-        <Container>
+        <Container style={{marginBottom:'3rem'}}>
         <hr style={{ border: "1px solid #EAE7FF" }} />
         <Grid
             container

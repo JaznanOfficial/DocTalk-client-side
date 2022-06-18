@@ -12,6 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../../../images/logo.png";
 import { NavLink } from "react-router-dom";
+import './Navigation.css';
 
 const Navigation = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -68,7 +69,7 @@ const Navigation = () => {
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <Box sx={{display:'flex', flexDirection:'column'}} className='responsive-menu-bar'>
                                 <NavLink to="home">Home</NavLink>
-                                <NavLink to="booking">Booking</NavLink>
+                                <NavLink to="booking">My Booking</NavLink>
                                 <NavLink to="services">Services</NavLink>
                                 <NavLink to="contact">Contact us</NavLink>
                                 </Box>
@@ -88,9 +89,10 @@ const Navigation = () => {
                         className="nav-links"
                     >
                         <NavLink to="home">Home</NavLink>
-                        <NavLink to="booking">Booking</NavLink>
                         <NavLink to="services">Services</NavLink>
+                        <NavLink to="about">About Us</NavLink>
                         <NavLink to="contact">Contact us</NavLink>
+                        <NavLink to="booking">My Booking</NavLink>
                     </Box>
 
                     <Box sx={{ flexGrow: { xs: 1, md: 0 } }}>

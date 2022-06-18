@@ -16,17 +16,17 @@
         "img": "https://medi-dove.netlify.app/img/services/service3.png"
     },
     {
-        "name": "Blod Cancer",
+        "name": "Blood Cancer",
         "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
         "img": "https://medi-dove.netlify.app/img/services/service4.png"
     },
     {
-        "name": "Neurology Surgery",
+        "name": "Neuro Surgery",
         "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
         "img": "https://medi-dove.netlify.app/img/services/service5.png"
     },
     {
-        "name": "Allergy Treatment",
+        "name": "Allergy Treat",
         "details":"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.",
         "img": "https://medi-dove.netlify.app/img/services/service6.png"
     }

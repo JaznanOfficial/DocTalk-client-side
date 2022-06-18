@@ -3,7 +3,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     height: fit-content;
-    margin-top: 3rem;
+    /* margin-top: 3rem !important; */
     padding: 50px;
 }
 
