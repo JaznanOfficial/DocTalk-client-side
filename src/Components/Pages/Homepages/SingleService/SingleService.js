@@ -59,7 +59,7 @@ const SingleService = () => {
                             </Typography>
                         </CardContent>
                         <Box style={{textAlign:'center'}}>
-                            <Button size="small" style={{cursor:'pointer'}}>See Doctors</Button>
+                            <Button size="small" color='error' style={{cursor:'pointer',color: "#F1386A", borderColor: "#F1386A"}}>See Doctors</Button>
                             
                         </Box>
                     </Card>
