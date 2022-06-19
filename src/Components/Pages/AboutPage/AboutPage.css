@@ -1,0 +1,17 @@
+.about-top{
+    background-image: url('https://medi-dove.netlify.app/static/media/page-bg.19c1fbc541073bd8ef07.jpg');
+    /* height: 300px; */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+@media screen and (max-width: 360px) {
+    
+    .about-h1{
+        font-size: 5rem !important;
+    }
+    .about-left img{
+        width: 320px;
+    }
+}
