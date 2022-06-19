@@ -23,7 +23,7 @@ const AboutPage = () => {
                     </h1>
                 </Container>
             </Box>
-            <Container>
+            <Container style={{marginBottom:'100px'}}>
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     <Grid item xs={4} sm={4} md={6}>
                         <div className='about-left'>
@@ -94,6 +94,52 @@ const AboutPage = () => {
                     </Grid>
                 </Grid>
             </Container>
+            <Box className='about-bottom' style={{padding:'100px 0 100px 0'}}>
+            <Container>
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    <Grid item xs={4} sm={4} md={4}>
+                        <div>
+                            <img
+                                src="https://medi-dove.netlify.app/img/counter/counter-icon-1.png"
+                                alt="img not found"
+                                />
+                                <div>
+                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom:'0' }}><span>358</span>+ </h1>
+                                    <h3 style={{ fontWeight: '600', fontSize:'26px' }}>Worldwide Branches</h3>
+                                    <p style={{color:'#647589', fontSize:'14px', fontWeight:'400', lineHeight:'26px'}}>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                        </div>
+                    </Grid>
+                    <Grid item xs={4} sm={4} md={4}>
+                        <div>
+                            <img
+                                src="https://medi-dove.netlify.app/img/counter/counter-icon-2.png"
+                                alt="img not found"
+                                />
+                                <div>
+                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom:'0' }}><span>358</span>+ </h1>
+                                    <h3 style={{ fontWeight: '600', fontSize:'26px' }}>Hospital Formed</h3>
+                                    <p style={{color:'#647589', fontSize:'14px', fontWeight:'400', lineHeight:'26px'}}>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                        </div>
+                    </Grid>
+                    <Grid item xs={4} sm={4} md={4}>
+                        <div>
+                            <img
+                                src="https://medi-dove.netlify.app/img/counter/counter-icon-3.png"
+                                alt="img not found"
+                                />
+                                <div>
+                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom:'0' }}><span>247</span>+ </h1>
+                                    <h3 style={{ fontWeight: '600', fontSize:'26px' }}>Local Partners</h3>
+                                    <p style={{color:'#647589', fontSize:'14px', fontWeight:'400', lineHeight:'26px'}}>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                </div>
+                        </div>
+                    </Grid>
+                    
+                </Grid>
+            </Container>
+            </Box>
         </Box>
     );
 };
