@@ -105,7 +105,7 @@ const AboutPage = () => {
                                 alt="img not found"
                                 />
                                 <div>
-                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom:'0' }}><span><CountUp end={358} duration={5} /></span>+ </h1>
+                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom:'0' }}><span><CountUp end={358} duration={10} /></span>+ </h1>
                                     <h3 style={{ fontWeight: '600', fontSize:'26px' }}>Worldwide Branches</h3>
                                     <p style={{color:'#647589', fontSize:'14px', fontWeight:'400', lineHeight:'26px'}}>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                 </div>
@@ -118,7 +118,7 @@ const AboutPage = () => {
                                 alt="img not found"
                                 />
                                 <div>
-                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom:'0' }}><span><CountUp end={358} duration={5} /></span>+ </h1>
+                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom:'0' }}><span><CountUp end={358} duration={10} /></span>+ </h1>
                                     <h3 style={{ fontWeight: '600', fontSize:'26px' }}>Hospital Formed</h3>
                                     <p style={{color:'#647589', fontSize:'14px', fontWeight:'400', lineHeight:'26px'}}>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                 </div>
@@ -131,7 +131,7 @@ const AboutPage = () => {
                                 alt="img not found"
                                 />
                                 <div>
-                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom: '0' }}><span><CountUp end={247} duration={5} /></span>+ </h1>
+                                    <h1 style={{ color: '#e12454', fontSize: '80px', fontWeight: '200', marginTop: '20px', marginBottom: '0' }}><span><CountUp end={247} duration={10} /></span>+ </h1>
                                     <h3 style={{ fontWeight: '600', fontSize:'26px' }}>Local Partners</h3>
                                     <p style={{color:'#647589', fontSize:'14px', fontWeight:'400', lineHeight:'26px'}}>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                 </div>
