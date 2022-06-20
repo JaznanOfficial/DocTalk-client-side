@@ -6,6 +6,7 @@ import Homepage from "./Components/Pages/Homepages/Homepage";
 import ServicesPage from "./Components/Pages/ServicesPage/ServicesPage";
 import NotFoundPage from "./Components/Pages/NotFoundPage/NotFoundPage";
 import AboutPage from './Components/Pages/AboutPage/AboutPage';
+import ContactPage from './Components/Pages/ContactPage/ContactPage';
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/home" element={<Homepage></Homepage>}></Route>
                 <Route path="/services" element={<ServicesPage></ServicesPage>}></Route>
                 <Route path="/about" element={<AboutPage></AboutPage>}></Route>
+                <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
                 <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
             </Routes>
         </div>
