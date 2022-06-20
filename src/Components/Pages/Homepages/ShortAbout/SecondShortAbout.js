@@ -1,4 +1,5 @@
 import React from 'react';
+import CountUp from 'react-countup';
 
 import { Box, Container, Grid } from "@mui/material";
 
@@ -18,7 +19,7 @@ const SecondShortAbout = () => {
                         src="https://medi-dove.netlify.app/img/counter/counter-icon-7.png"
                         alt="img not found"
                     />
-                    <h1 style={{ fontSize: "3rem" }}>540+</h1>
+                    <h1 style={{ fontSize: "3rem" }}><CountUp end={540} duration={5} />+</h1>
                     <h4 style={{ color: "#8FB569" }}>Expert Doctors</h4>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -32,7 +33,7 @@ const SecondShortAbout = () => {
                         src="https://medi-dove.netlify.app/img/counter/counter-icon-83.png"
                         alt="img not found"
                     />
-                    <h1 style={{ fontSize: "3rem" }}>899+</h1>
+                    <h1 style={{ fontSize: "3rem" }}><CountUp end={899} duration={5} />+</h1>
                     <h4 style={{ color: "#8FB569" }}>Problem Solved</h4>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -46,7 +47,7 @@ const SecondShortAbout = () => {
                         src="https://medi-dove.netlify.app/img/counter/counter-icon-9.png"
                         alt="img not found"
                     />
-                    <h1 style={{ fontSize: "3rem" }}>40+</h1>
+                    <h1 style={{ fontSize: "3rem" }}><CountUp end={40} duration={5} />+</h1>
                     <h4 style={{ color: "#8FB569" }}>Award Winner</h4>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
