@@ -33,9 +33,9 @@ const ContactPage = () => {
                         >
                             <div style={{textAlign:'center', marginRight:'30px'}}>
                             <div className="text">Get in Touch</div>
-                            <p style={{fontWeight:'bolder', color:'#5357CA'}}>
-                                In any purpose you can contact with me
-                            </p>
+                            {/* <p style={{fontWeight:'bolder', color:'#F27732'}}>
+                                In any purpose you can contact with Us
+                            </p> */}
                             </div>
                             <div className="icons ms-3 text-start">
                                 <div className="row-icon">
@@ -71,7 +71,7 @@ const ContactPage = () => {
                     <Grid item xs={4} sm={8} md={6}>
                         <div className="column right w-100 mx-3">
                             <div className="text">Message us</div>
-                            <form action="#">
+                            <form action="#" style={{marginTop:'30px'}}>
                                 <div className="fields">
                                     <div className="field name">
                                         <input
