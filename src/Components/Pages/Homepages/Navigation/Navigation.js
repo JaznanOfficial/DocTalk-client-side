@@ -12,6 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import logo from "../../../../images/logo.png";
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
+import { Button } from "@mui/material";
 
 const Navigation = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -92,6 +93,7 @@ const Navigation = () => {
                             flexGrow: 1,
                             display: { xs: "none", md: "flex" },
                             justifyContent: "flex-end",
+                            alignItems: "center",
                         }}
                         className="nav-links"
                     >
@@ -100,6 +102,24 @@ const Navigation = () => {
                         <NavLink to="about">About Us</NavLink>
                         <NavLink to="contact">Contact us</NavLink>
                         <NavLink to="join">Join as a doctor</NavLink>
+                        <NavLink to="sign-in">
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                style={{
+                                    margin: "0px 0px",
+                                    padding: "5px 10px",
+                                    fontSize: "15px",
+                                    backgroundColor: "#F17732",
+                                    color: "#FEF3ED",
+                                    fontWeight: "400",
+                                    cursor: "pointer",
+                                    textTransform: "none",
+                                }}
+                            >
+                                Login
+                            </Button>
+                        </NavLink>
                     </Box>
 
                     <Box sx={{ flexGrow: { xs: 1, md: 0 } }}>
