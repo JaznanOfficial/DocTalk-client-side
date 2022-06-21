@@ -3,7 +3,6 @@ import {
     Button,
     Container,
     FormControl,
-    FormHelperText,
     IconButton,
     InputAdornment,
     InputLabel,
@@ -14,6 +13,7 @@ import "../SignupPage/SignUp.css";
 import logo from "../../../images/logo.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { NavLink } from "react-router-dom";
 
 const SignIn = () => {
     // ----------------------
@@ -34,7 +34,7 @@ const SignIn = () => {
             <Container style={{ textAlign: "center" }}>
                 <Box
                     style={{
-                        border: "none",
+                        border: "1px solid #565ACF",
                         borderRadius: "50px",
                         backgroundColor: "#FFFFFF",
                         width: "520px",
@@ -90,12 +90,12 @@ const SignIn = () => {
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width:'50ch',
-                                    margin: "0px 0px",
+                                    width: '31ch',
+                                    color:'white',
+                                    margin: "5px 0px",
                                     padding: "5px 10px",
-                                    fontSize: "15px",
-                                    backgroundColor: "#F17732",
-                                    color: "#FEF3ED",
+                                    fontSize: "25px",
+                                    backgroundColor: "#565ACF",
                                     fontWeight: "400",
                                     cursor: "pointer",
                                     textTransform: "none",
@@ -104,6 +104,106 @@ const SignIn = () => {
                                 Login
                             </Button>
                         </form>
+
+                        <h3 style={{ color: "#565ACF" }}>Or</h3>
+                        
+                        <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                style={{
+                                    width: '31ch',
+                                    color:'white',
+                                    margin: "5px 0px",
+                                    padding: "5px 10px",
+                                    fontSize: "25px",
+                                    backgroundColor: "#E44134",
+                                    fontWeight: "400",
+                                    cursor: "pointer",
+                                    textTransform: "none",
+                                }}
+                            >
+                                Login With Google
+                            </Button>
+                        <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                style={{
+                                    width: '31ch',
+                                    color:'white',
+                                    margin: "5px 0px",
+                                    padding: "5px 10px",
+                                    fontSize: "25px",
+                                    backgroundColor: "#010101",
+                                    fontWeight: "400",
+                                    cursor: "pointer",
+                                    textTransform: "none",
+                                }}
+                            >
+                                Login With Github
+                            </Button>
+                        <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                style={{
+                                    width: '31ch',
+                                    color:'white',
+                                    margin: "5px 0px",
+                                    padding: "5px 10px",
+                                    fontSize: "25px",
+                                    backgroundColor: "#1C9CEA",
+                                    fontWeight: "400",
+                                    cursor: "pointer",
+                                    textTransform: "none",
+                                }}
+                            >
+                                Login With Twitter
+                            </Button>
+                        <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                style={{
+                                    width: '31ch',
+                                    color:'white',
+                                    margin: "5px 0px",
+                                    padding: "5px 10px",
+                                    fontSize: "25px",
+                                    backgroundColor: "#1773EA",
+                                    fontWeight: "400",
+                                    cursor: "pointer",
+                                    textTransform: "none",
+                                }}
+                            >
+                                Login With Facebook
+                            </Button>
+
+                        <Container>
+                        <hr style={{ border: "1px solid #EAE7FF" }} />
+                        </Container>
+                            <h3 style={{color:'#44446E'}}>Don't have any account?</h3>
+                        <NavLink to='/sign-up'>
+                        <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                style={{
+                                    width: '31ch',
+                                    color:'white',
+                                    margin: "5px 0px",
+                                    padding: "5px 10px",
+                                    fontSize: "25px",
+                                    backgroundColor: "#F17732",
+                                    fontWeight: "400",
+                                    cursor: "pointer",
+                                    textTransform: "none",
+                                }}
+                            >
+                                Register
+                            </Button>
+                        </NavLink>
                     </Box>
                 </Box>
             </Container>
