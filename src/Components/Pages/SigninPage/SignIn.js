@@ -108,13 +108,14 @@ const SignIn = () => {
                         <h3 style={{ color: "#565ACF" }}>Or</h3>
                         
                         <Button
+                                className='social-login-button'
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width: '31ch',
+                                    width: '2ch',
                                     color:'white',
-                                    margin: "5px 0px",
+                                    margin: "5px 5px",
                                     padding: "5px 10px",
                                     fontSize: "25px",
                                     backgroundColor: "#E44134",
@@ -123,16 +124,17 @@ const SignIn = () => {
                                     textTransform: "none",
                                 }}
                             >
-                                Login With Google
+                            <i class="fa-brands fa-google"></i>
                             </Button>
                         <Button
+                                className='social-login-button'
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width: '31ch',
+                                    width: '1ch',
                                     color:'white',
-                                    margin: "5px 0px",
+                                    margin: "5px 5px",
                                     padding: "5px 10px",
                                     fontSize: "25px",
                                     backgroundColor: "#010101",
@@ -141,16 +143,17 @@ const SignIn = () => {
                                     textTransform: "none",
                                 }}
                             >
-                                Login With Github
+                            <i class="fa-brands fa-github"></i>
                             </Button>
                         <Button
+                                className='social-login-button'
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width: '31ch',
+                                    width: '1ch',
                                     color:'white',
-                                    margin: "5px 0px",
+                                    margin: "5px 5px",
                                     padding: "5px 10px",
                                     fontSize: "25px",
                                     backgroundColor: "#1C9CEA",
@@ -159,16 +162,17 @@ const SignIn = () => {
                                     textTransform: "none",
                                 }}
                             >
-                                Login With Twitter
+                            <i class="fa-brands fa-twitter"></i>
                             </Button>
                         <Button
+                                className='social-login-button'
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width: '31ch',
+                                    width: '1ch',
                                     color:'white',
-                                    margin: "5px 0px",
+                                    margin: "5px 5px",
                                     padding: "5px 10px",
                                     fontSize: "25px",
                                     backgroundColor: "#1773EA",
@@ -177,7 +181,7 @@ const SignIn = () => {
                                     textTransform: "none",
                                 }}
                             >
-                                Login With Facebook
+                            <i class="fa-brands fa-facebook-f"></i>
                             </Button>
 
                         <Container>

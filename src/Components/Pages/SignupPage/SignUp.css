@@ -4,3 +4,6 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.social-login-button:hover{
+    box-shadow: 0px 0px 10px rgb(150, 150, 150) !important;
+}

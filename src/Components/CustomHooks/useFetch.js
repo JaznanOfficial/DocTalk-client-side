@@ -4,10 +4,11 @@ const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    console.log(url)
     useEffect(() => {
        
-            fetch(url)
+        fetch(url)
+                
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error(res.statusText);
