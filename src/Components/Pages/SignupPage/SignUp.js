@@ -14,9 +14,9 @@ import logo from "../../../images/logo.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { NavLink } from "react-router-dom";
+import "./SignUp.css";
 
 const SignUp = () => {
-
     // ----------------------
     const [show, setShow] = React.useState(false);
 
@@ -31,14 +31,17 @@ const SignUp = () => {
     };
 
     return (
-        <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>
+        <div
+            className="sign-up"
+            style={{ padding: "100px 10px", textAlign: "center", margin: "0" }}
+        >
             <Container style={{ textAlign: "center" }}>
                 <Box
+                    className="sign-up-box"
                     style={{
                         border: "1px solid #565ACF",
                         borderRadius: "50px",
                         backgroundColor: "#FFFFFF",
-                        width: "520px",
                         margin: "0 auto",
                         paddingBottom: "40px",
                     }}
@@ -54,7 +57,11 @@ const SignUp = () => {
                     </Box>
                     <Box>
                         <form action="">
-                            <FormControl sx={{ m: 1, width: "50ch" }} variant="outlined">
+                            <FormControl
+                                className="input-field"
+                                sx={{ m: 1, width: "50ch" }}
+                                variant="outlined"
+                            >
                                 <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-name"
@@ -62,7 +69,12 @@ const SignUp = () => {
                                     label="name"
                                 />
                             </FormControl>{" "}
-                            <FormControl sx={{ m: 1, width: "50ch" }} variant="outlined">
+                            <br />
+                            <FormControl
+                                className="input-field"
+                                sx={{ m: 1, width: "50ch" }}
+                                variant="outlined"
+                            >
                                 <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-email"
@@ -71,7 +83,11 @@ const SignUp = () => {
                                 />
                             </FormControl>{" "}
                             <br />
-                            <FormControl sx={{ m: 1, width: "50ch" }} variant="outlined">
+                            <FormControl
+                                className="input-field"
+                                sx={{ m: 1, width: "50ch" }}
+                                variant="outlined"
+                            >
                                 <InputLabel htmlFor="outlined-adornment-password">
                                     Password
                                 </InputLabel>
@@ -95,12 +111,13 @@ const SignUp = () => {
                             </FormControl>{" "}
                             <br />
                             <Button
+                                className="sign-up-btn"
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width: '31ch',
-                                    color:'white',
+                                    width: "31ch",
+                                    color: "white",
                                     margin: "5px 0px",
                                     padding: "5px 10px",
                                     fontSize: "25px",
@@ -115,17 +132,18 @@ const SignUp = () => {
                         </form>
 
                         <Container>
-                        <hr style={{ border: "1px solid #EAE7FF" }} />
+                            <hr style={{ border: "1px solid #EAE7FF" }} />
                         </Container>
-                            <h3 style={{color:'#44446E'}}>Already have any account? </h3>
-                        <NavLink to='/sign-in'>
-                        <Button
+                        <h3 style={{ color: "#44446E" }}>Already have any account? </h3>
+                        <NavLink to="/sign-in">
+                            <Button
+                                className="sign-up-btn"
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width: '31ch',
-                                    color:'white',
+                                    width: "31ch",
+                                    color: "white",
                                     margin: "5px 0px",
                                     padding: "5px 10px",
                                     fontSize: "25px",
@@ -141,7 +159,7 @@ const SignUp = () => {
                     </Box>
                 </Box>
             </Container>
-        </Box>
+        </div>
     );
 };
 

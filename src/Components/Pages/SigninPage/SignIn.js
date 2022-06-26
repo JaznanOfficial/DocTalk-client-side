@@ -15,6 +15,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { NavLink } from "react-router-dom";
 
+
 const SignIn = () => {
     // ----------------------
     const [show, setShow] = React.useState(false);
@@ -33,6 +34,7 @@ const SignIn = () => {
         <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>
             <Container style={{ textAlign: "center" }}>
                 <Box
+                    className="sign-up-box"
                     style={{
                         border: "1px solid #565ACF",
                         borderRadius: "50px",
@@ -53,7 +55,11 @@ const SignIn = () => {
                     </Box>
                     <Box>
                         <form action="">
-                            <FormControl sx={{ m: 1, width: "50ch" }} variant="outlined">
+                            <FormControl
+                                className="input-field"
+                                sx={{ m: 1, width: "50ch" }}
+                                variant="outlined"
+                            >
                                 <InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-email"
@@ -62,7 +68,11 @@ const SignIn = () => {
                                 />
                             </FormControl>{" "}
                             <br />
-                            <FormControl sx={{ m: 1, width: "50ch" }} variant="outlined">
+                            <FormControl
+                                className="input-field"
+                                sx={{ m: 1, width: "50ch" }}
+                                variant="outlined"
+                            >
                                 <InputLabel htmlFor="outlined-adornment-password">
                                     Password
                                 </InputLabel>
@@ -86,12 +96,13 @@ const SignIn = () => {
                             </FormControl>{" "}
                             <br />
                             <Button
+                            className="sign-up-btn"
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width: '31ch',
-                                    color:'white',
+                                    width: "31ch",
+                                    color: "white",
                                     margin: "5px 0px",
                                     padding: "5px 10px",
                                     fontSize: "25px",
@@ -106,96 +117,98 @@ const SignIn = () => {
                         </form>
 
                         <h3 style={{ color: "#565ACF" }}>Or</h3>
-                        
+
                         <Button
-                                className='social-login-button'
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                style={{
-                                    width: '2ch',
-                                    color:'white',
-                                    margin: "5px 5px",
-                                    padding: "5px 10px",
-                                    fontSize: "25px",
-                                    backgroundColor: "#E44134",
-                                    fontWeight: "400",
-                                    cursor: "pointer",
-                                    textTransform: "none",
-                                }}
-                            >
+                            
+                            className="social-login-button"
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            style={{
+                                width: "2ch",
+                                color: "white",
+                                margin: "5px 5px",
+                                padding: "5px 10px",
+                                fontSize: "25px",
+                                backgroundColor: "#E44134",
+                                fontWeight: "400",
+                                cursor: "pointer",
+                                textTransform: "none",
+                            }}
+                        >
                             <i class="fa-brands fa-google"></i>
-                            </Button>
+                        </Button>
                         <Button
-                                className='social-login-button'
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                style={{
-                                    width: '1ch',
-                                    color:'white',
-                                    margin: "5px 5px",
-                                    padding: "5px 10px",
-                                    fontSize: "25px",
-                                    backgroundColor: "#010101",
-                                    fontWeight: "400",
-                                    cursor: "pointer",
-                                    textTransform: "none",
-                                }}
-                            >
+                            className="social-login-button"
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            style={{
+                                width: "1ch",
+                                color: "white",
+                                margin: "5px 5px",
+                                padding: "5px 10px",
+                                fontSize: "25px",
+                                backgroundColor: "#010101",
+                                fontWeight: "400",
+                                cursor: "pointer",
+                                textTransform: "none",
+                            }}
+                        >
                             <i class="fa-brands fa-github"></i>
-                            </Button>
+                        </Button>
                         <Button
-                                className='social-login-button'
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                style={{
-                                    width: '1ch',
-                                    color:'white',
-                                    margin: "5px 5px",
-                                    padding: "5px 10px",
-                                    fontSize: "25px",
-                                    backgroundColor: "#1C9CEA",
-                                    fontWeight: "400",
-                                    cursor: "pointer",
-                                    textTransform: "none",
-                                }}
-                            >
+                            className="social-login-button"
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            style={{
+                                width: "1ch",
+                                color: "white",
+                                margin: "5px 5px",
+                                padding: "5px 10px",
+                                fontSize: "25px",
+                                backgroundColor: "#1C9CEA",
+                                fontWeight: "400",
+                                cursor: "pointer",
+                                textTransform: "none",
+                            }}
+                        >
                             <i class="fa-brands fa-twitter"></i>
-                            </Button>
+                        </Button>
                         <Button
-                                className='social-login-button'
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                style={{
-                                    width: '1ch',
-                                    color:'white',
-                                    margin: "5px 5px",
-                                    padding: "5px 10px",
-                                    fontSize: "25px",
-                                    backgroundColor: "#1773EA",
-                                    fontWeight: "400",
-                                    cursor: "pointer",
-                                    textTransform: "none",
-                                }}
-                            >
+                            className="social-login-button"
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            style={{
+                                width: "1ch",
+                                color: "white",
+                                margin: "5px 5px",
+                                padding: "5px 10px",
+                                fontSize: "25px",
+                                backgroundColor: "#1773EA",
+                                fontWeight: "400",
+                                cursor: "pointer",
+                                textTransform: "none",
+                            }}
+                        >
                             <i class="fa-brands fa-facebook-f"></i>
-                            </Button>
+                        </Button>
 
                         <Container>
-                        <hr style={{ border: "1px solid #EAE7FF" }} />
+                            <hr style={{ border: "1px solid #EAE7FF" }} />
                         </Container>
-                            <h3 style={{color:'#44446E'}}>Don't have any account?</h3>
-                        <NavLink to='/sign-up'>
-                        <Button
+                        <h3 style={{ color: "#44446E" }}>Don't have any account?</h3>
+                        <NavLink to="/sign-up">
+                            <Button
+                            className="sign-up-btn"
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 style={{
-                                    width: '31ch',
-                                    color:'white',
+                                    width: "31ch",
+                                    color: "white",
                                     margin: "5px 0px",
                                     padding: "5px 10px",
                                     fontSize: "25px",

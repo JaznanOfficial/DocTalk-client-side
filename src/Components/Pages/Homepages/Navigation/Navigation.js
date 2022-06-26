@@ -80,6 +80,24 @@ const Navigation = () => {
                                     <NavLink to="about">About Us</NavLink>
                                     <NavLink to="contact">Contact us</NavLink>
                                     <NavLink to="join">Join as a doctor</NavLink>
+                                    <NavLink to="sign-in">
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            style={{
+                                                margin: "0px 0px",
+                                                padding: "5px 10px",
+                                                fontSize: "15px",
+                                                backgroundColor: "#F17732",
+                                                color: "#FEF3ED",
+                                                fontWeight: "400",
+                                                cursor: "pointer",
+                                                textTransform: "none",
+                                            }}
+                                        >
+                                            Login
+                                        </Button>
+                                    </NavLink>
                                 </Box>
                             </MenuItem>
                         </Menu>

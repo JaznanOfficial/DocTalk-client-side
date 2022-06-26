@@ -4,6 +4,30 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.sign-up-box{
+    width: 520px !important;
+}
 .social-login-button:hover{
     box-shadow: 0px 0px 10px rgb(150, 150, 150) !important;
 }
+
+
+
+
+@media screen and (max-width: 360px) {
+    .sign-up{
+        width: 340px !important;
+       
+    }
+    .sign-up-box{
+        width: 300px !important;
+    }
+    .input-field{
+        width: 280px !important;
+    }
+    .sign-up-btn{
+        width: 280px !important;
+    }
+}
+    
