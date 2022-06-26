@@ -61,7 +61,7 @@ const SingleService = () => {
                                         </Typography>
                                     </CardContent>
                                     <Box style={{ textAlign: "center" }}>
-                                        <Link to={`/doctors/${id}`}>
+                                        <Link to={`/doctors/${name}`}>
                                             <Button
                                                 size="small"
                                                 color="error"

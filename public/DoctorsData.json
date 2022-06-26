@@ -4,8 +4,8 @@
         "gender":"male",
         "specialized":"Body Surgery",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":100,
+        "rating":"5",
         "img":"https://shreethemes.in/doctris/layouts/assets/images/doctors/01.jpg"
     },
     {
@@ -13,8 +13,8 @@
         "gender":"male",
         "specialized":"Body Surgery",
         "location":"63, PG Shustoke, UK",
-        "fees":"$80",
-        "rating":"5",
+        "fees":80,
+        "rating":"4.5",
         "img":"https://shreethemes.in/doctris/layouts/assets/images/doctors/02.jpg"
     },
     {
@@ -22,8 +22,8 @@
         "gender":"female",
         "specialized":"Body Surgery",
         "location":"63, PG Shustoke, UK",
-        "fees":"$70",
-        "rating":"4.5",
+        "fees":70,
+        "rating":"4",
         "img":"https://shreethemes.in/doctris/layouts/assets/images/doctors/03.jpg"
     },
     {
@@ -31,8 +31,8 @@
         "gender":"female",
         "specialized":"Dental Care",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":100,
+        "rating":"5",
         "img":"https://shreethemes.in/doctris/layouts/assets/images/doctors/04.jpg"
     },
     {
@@ -40,7 +40,7 @@
         "gender":"female",
         "specialized":"Dental Care",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
+        "fees":80,
         "rating":"4.5",
         "img":"https://shreethemes.in/doctris/layouts/assets/images/doctors/05.jpg"
     },
@@ -49,8 +49,8 @@
         "gender":"female",
         "specialized":"Dental Care",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":75,
+        "rating":"4",
         "img":"https://shreethemes.in/doctris/layouts/assets/images/doctors/06.jpg"
     },
     {
@@ -58,8 +58,8 @@
         "gender":"female",
         "specialized":"Allergy Treat",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":100,
+        "rating":"5",
         "img":"https://shreethemes.in/doctris/layouts/assets/images/doctors/07.jpg"
     },
     {
@@ -67,7 +67,7 @@
         "gender":"female",
         "specialized":"Allergy Treat",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
+        "fees":80,
         "rating":"4.5",
         "img":"https://shreethemes.in/doctris/layouts/assets/images/doctors/08.jpg"
     },
@@ -76,8 +76,8 @@
         "gender":"male",
         "specialized":"Eye Care",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":70,
+        "rating":"4",
         "img":"https://meditro.themetrades.com/react/static/media/member1.22ac1d59.jpg"
     },
     {
@@ -85,8 +85,8 @@
         "gender":"female",
         "specialized":"Eye Care",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":100,
+        "rating":"5",
         "img":"https://meditro.themetrades.com/react/static/media/member2.d03a0686.jpg"
     },
     {
@@ -94,7 +94,7 @@
         "gender":"male",
         "specialized":"Eye Care",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
+        "fees":80,
         "rating":"4.5",
         "img":"https://meditro.themetrades.com/react/static/media/member3.0d822ecc.jpg"
     },
@@ -103,8 +103,8 @@
         "gender":"male",
         "specialized":"Blood Cancer",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":70,
+        "rating":"4",
         "img":"https://meditro.themetrades.com/react/static/media/member4.9045579a.jpg"
     },
     {
@@ -112,8 +112,8 @@
         "gender":"male",
         "specialized":"Blood Cancer",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":100,
+        "rating":"5",
         "img":"https://meditro.themetrades.com/react/static/media/member5.24eb1821.jpg"
     },
     {
@@ -121,7 +121,7 @@
         "gender":"male",
         "specialized":"Blood Cancer",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
+        "fees":80,
         "rating":"4.5",
         "img":"https://meditro.themetrades.com/react/static/media/member6.be2a77ad.jpg"
     },
@@ -130,8 +130,8 @@
         "gender":"male",
         "specialized":"Neuro Surgery",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":70,
+        "rating":"4",
         "img":"https://medi-dove.netlify.app/img/team/team-member-7.jpg"
     },
     {
@@ -139,8 +139,8 @@
         "gender":"male",
         "specialized":"Neuro Surgery",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":100,
+        "rating":"5",
         "img":"https://medi-dove.netlify.app/img/team/team-member-8.jpg"
     },
     {
@@ -148,7 +148,7 @@
         "gender":"male",
         "specialized":"Neuro Surgery",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
+        "fees":80,
         "rating":"4.5",
         "img":"https://medi-dove.netlify.app/img/team/team-member-9.jpg"
     },
@@ -157,8 +157,8 @@
         "gender":"female",
         "specialized":"Allergy Treat",
         "location":"63, PG Shustoke, UK",
-        "fees":"$75",
-        "rating":"4.5",
+        "fees":70,
+        "rating":"4",
         "img":"https://medi-dove.netlify.app/img/team/team-member-10.jpg"
     }
 ]

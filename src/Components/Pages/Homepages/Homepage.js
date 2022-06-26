@@ -15,7 +15,7 @@ const Homepage = () => {
             <SecondShortAbout></SecondShortAbout>
             <Services></Services>
             <SingleService></SingleService>
-            <Footer></Footer>
+            
         </div>
     );
 };

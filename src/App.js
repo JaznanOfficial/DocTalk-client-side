@@ -10,6 +10,7 @@ import ContactPage from './Components/Pages/ContactPage/ContactPage';
 import SignIn from './Components/Pages/SigninPage/SignIn';
 import SignUp from "./Components/Pages/SignupPage/SignUp";
 import DoctorsPage from "./Components/Pages/DoctorsPage/DoctorsPage";
+import Footer from "./Components/Pages/Homepages/Footer/Footer";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/sign-up" element={<SignUp></SignUp>}></Route>
                 <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
             </Routes>
+            <Footer></Footer>
         </div>
     );
 }
