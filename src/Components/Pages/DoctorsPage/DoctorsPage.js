@@ -72,7 +72,7 @@ const DoctorsPage = () => {
                                         </Typography>
                                     </CardContent>
                                     <Box style={{ textAlign: "center" }}>
-                                        <Link to={`/booking/${""}`}>
+                                        <Link to={`/booking/${_id}`}>
                                             <Button
                                                 size="small"
                                                 color="error"

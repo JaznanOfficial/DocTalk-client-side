@@ -1,0 +1,7 @@
+.booking-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 390px;
+    margin: 30px auto;
+}
