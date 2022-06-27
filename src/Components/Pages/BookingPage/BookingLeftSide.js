@@ -7,7 +7,7 @@ import './BookingLeftSide.css';
 const BookingLeftSide = () => {
     const { id } = useParams();
 
-    const { data, loading, error } = useFetch(`http://localhost:5000/booking/${id}`);
+    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
 
     
     const { name, img, fees, location, rating } = data;
