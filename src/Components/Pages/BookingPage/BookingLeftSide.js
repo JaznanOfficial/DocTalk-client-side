@@ -8,7 +8,7 @@ const BookingLeftSide = ({data}) => {
     
 
     
-    const { name, img, fees, location, rating } = data;
+    const { name, img, fees, location, rating,specialized } = data;
     return (
         
             <Card
@@ -37,6 +37,7 @@ const BookingLeftSide = ({data}) => {
                         <p style={{ margin: "2px auto" }}>{location}</p>
                         <Rating name="read-only" value={Number(rating)} precision={0.5} readOnly />
                         <h3 style={{ margin: "2px auto" }}> $ {fees} </h3>
+                        <h3 style={{ margin: "2px auto",color:'#E95A7C' }}>{specialized} specialist</h3>
                     </Typography>
                 </CardContent>
             </Card>

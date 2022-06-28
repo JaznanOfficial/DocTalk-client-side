@@ -15,7 +15,6 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { NavLink } from "react-router-dom";
 
-
 const SignIn = () => {
     // ----------------------
     const [show, setShow] = React.useState(false);
@@ -96,7 +95,7 @@ const SignIn = () => {
                             </FormControl>{" "}
                             <br />
                             <Button
-                            className="sign-up-btn"
+                                className="sign-up-btn"
                                 type="submit"
                                 variant="contained"
                                 color="primary"
@@ -119,7 +118,6 @@ const SignIn = () => {
                         <h3 style={{ color: "#565ACF" }}>Or</h3>
 
                         <Button
-                            
                             className="social-login-button"
                             type="submit"
                             variant="contained"
@@ -136,7 +134,7 @@ const SignIn = () => {
                                 textTransform: "none",
                             }}
                         >
-                            <i class="fa-brands fa-google"></i>
+                            <i className="fa-brands fa-google"></i>
                         </Button>
                         <Button
                             className="social-login-button"
@@ -155,7 +153,7 @@ const SignIn = () => {
                                 textTransform: "none",
                             }}
                         >
-                            <i class="fa-brands fa-github"></i>
+                            <i className="fa-brands fa-github"></i>
                         </Button>
                         <Button
                             className="social-login-button"
@@ -174,7 +172,7 @@ const SignIn = () => {
                                 textTransform: "none",
                             }}
                         >
-                            <i class="fa-brands fa-twitter"></i>
+                            <i className="fa-brands fa-twitter"></i>
                         </Button>
                         <Button
                             className="social-login-button"
@@ -193,7 +191,7 @@ const SignIn = () => {
                                 textTransform: "none",
                             }}
                         >
-                            <i class="fa-brands fa-facebook-f"></i>
+                            <i className="fa-brands fa-facebook-f"></i>
                         </Button>
 
                         <Container>
@@ -202,7 +200,7 @@ const SignIn = () => {
                         <h3 style={{ color: "#44446E" }}>Don't have any account?</h3>
                         <NavLink to="/sign-up">
                             <Button
-                            className="sign-up-btn"
+                                className="sign-up-btn"
                                 type="submit"
                                 variant="contained"
                                 color="primary"

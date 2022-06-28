@@ -19,6 +19,7 @@ const BookingRightSide = ({ data, error, loading }) => {
     const [today, setToday] = React.useState(date.toISOString().split("T")[0]);
    
     const doctorNameRef = useRef();
+    const serviceRef = useRef();
     const nameRef = useRef();
     const emailRef = useRef();
     const numberRef = useRef();
@@ -31,12 +32,13 @@ const BookingRightSide = ({ data, error, loading }) => {
     const handleSubmit = (e) => { 
         e.preventDefault();
         const doctorName= doctorNameRef.current.value;
+        const serviceName= serviceRef.current.value;
         const patientName = nameRef.current.value;
         const email = emailRef.current.value;
         const number = numberRef.current.value;
         const address = addressRef.current.value;
         const date = dateRef.current.value;
-        console.log({doctorName,patientName,email,number,address,date});
+        console.log({doctorName,serviceName, patientName,email,number,address,date});
 
     }
 
@@ -79,6 +81,20 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     type="text"
                                     label="doctor's name"
                                     inputRef={doctorNameRef}
+                                    
+                                />
+                            </FormControl>{" "}
+                            <FormControl
+                                className="input-field"
+                                sx={{ m: 1, width: "50ch" }}
+                                variant="outlined"
+                            >
+                                <InputLabel htmlFor="outlined-adornment-name">Service</InputLabel>
+                                <OutlinedInput
+                                    id="outlined-adornment-name"
+                                    type="text"
+                                    label="doctor's name"
+                                    inputRef={serviceRef}
                                     
                                 />
                             </FormControl>{" "}
