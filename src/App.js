@@ -12,6 +12,7 @@ import SignUp from "./Components/Pages/SignupPage/SignUp";
 import DoctorsPage from "./Components/Pages/DoctorsPage/DoctorsPage";
 import Footer from "./Components/Pages/Homepages/Footer/Footer";
 import BookingPage from "./Components/Pages/BookingPage/BookingPage";
+import PaymentPage from "./Components/Pages/PaymentPage/PaymentPage";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/about" element={<AboutPage></AboutPage>}></Route>
                 <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
                 <Route path="/booking/:id" element={<BookingPage></BookingPage>}></Route>
+                <Route path="/payment/:id" element={<PaymentPage></PaymentPage>}></Route>
                 <Route path="/sign-in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign-up" element={<SignUp></SignUp>}></Route>
                 <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>

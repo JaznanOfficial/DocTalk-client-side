@@ -7,12 +7,13 @@ import {
     OutlinedInput,
     TextField,
 } from "@mui/material";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import "../SignupPage/SignUp.css";
 import BookingLeftSide from "./BookingLeftSide";
 
-const BookingRightSide = () => {
+const BookingRightSide = ({ data, error, loading }) => {
+    const { _id } = data;
 
     const date = new Date();
     const [today, setToday] = React.useState(date.toISOString().split("T")[0]);
@@ -24,13 +25,18 @@ const BookingRightSide = () => {
     const addressRef = useRef();
     const dateRef = useRef();
 
-
+    
     
     
     const handleSubmit = (e) => { 
         e.preventDefault();
+        const doctorName= doctorNameRef.current.value;
         const patientName = nameRef.current.value;
-        console.log(patientName);
+        const email = emailRef.current.value;
+        const number = numberRef.current.value;
+        const address = addressRef.current.value;
+        const date = dateRef.current.value;
+        console.log({doctorName,patientName,email,number,address,date});
 
     }
 
@@ -52,7 +58,7 @@ const BookingRightSide = () => {
                         paddingBottom: "40px",
                     }}
                 >
-                    <BookingLeftSide></BookingLeftSide>
+                    <BookingLeftSide data={data}></BookingLeftSide>
                     <Box>
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Patient_logo_2019.svg/1200px-Patient_logo_2019.svg.png"
@@ -72,8 +78,8 @@ const BookingRightSide = () => {
                                     id="outlined-adornment-name"
                                     type="text"
                                     label="doctor's name"
-                                    ref={doctorNameRef}
-                                    value={''}
+                                    inputRef={doctorNameRef}
+                                    
                                 />
                             </FormControl>{" "}
                             <FormControl
@@ -86,7 +92,7 @@ const BookingRightSide = () => {
                                     id="outlined-adornment-name"
                                     type="text"
                                     label="name"
-                                    ref={nameRef}
+                                    inputRef={nameRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -100,7 +106,7 @@ const BookingRightSide = () => {
                                     id="outlined-adornment-email"
                                     type="email"
                                     label="Email"
-                                    ref={emailRef}
+                                    inputRef={emailRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -116,7 +122,7 @@ const BookingRightSide = () => {
                                     label="phone"
                                     maxLength='11'
                                     minLength='11'
-                                    ref={numberRef}
+                                    inputRef={numberRef}
                                     
                                 />
                             </FormControl>{" "}
@@ -132,7 +138,7 @@ const BookingRightSide = () => {
                                     multiline
                                     rows={4}
                                     defaultValue=""
-                                    ref={addressRef}
+                                    inputRef={addressRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -148,11 +154,12 @@ const BookingRightSide = () => {
                                     label="date"
                                     defaultValue={today}
                                     min={today}
-                                    ref={dateRef}
+                                    inputRef={dateRef}
                                 />
                             </FormControl>{" "}
                             <br />
                             <br />
+                            <Link to={`/payment/${_id}`}>
                             <Button
                                 className="sign-up-btn"
                                 type="submit"
@@ -172,6 +179,7 @@ const BookingRightSide = () => {
                             >
                                 Book
                             </Button>
+                            </Link>
                         </form>
                     </Box>
                 </Box>

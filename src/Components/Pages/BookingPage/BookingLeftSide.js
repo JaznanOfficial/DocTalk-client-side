@@ -4,10 +4,8 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../CustomHooks/useFetch";
 import './BookingLeftSide.css';
 
-const BookingLeftSide = () => {
-    const { id } = useParams();
-
-    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
+const BookingLeftSide = ({data}) => {
+    
 
     
     const { name, img, fees, location, rating } = data;
@@ -35,7 +33,7 @@ const BookingLeftSide = () => {
                     >
                         {name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography color="text.secondary">
                         <p style={{ margin: "2px auto" }}>{location}</p>
                         <Rating name="read-only" value={Number(rating)} precision={0.5} readOnly />
                         <h3 style={{ margin: "2px auto" }}> $ {fees} </h3>
