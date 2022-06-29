@@ -13,7 +13,7 @@ import "../SignupPage/SignUp.css";
 import BookingLeftSide from "./BookingLeftSide";
 
 const BookingRightSide = ({ data, error, loading }) => {
-    const { _id } = data;
+    const { _id, name, specialized } = data;
 
     const date = new Date();
     const [today, setToday] = React.useState(date.toISOString().split("T")[0]);
@@ -61,13 +61,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                     }}
                 >
                     <BookingLeftSide data={data}></BookingLeftSide>
-                    <Box>
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Patient_logo_2019.svg/1200px-Patient_logo_2019.svg.png"
-                            alt="patient img"
-                            width={"390px"}
-                        />
-                    </Box>
+                    
                     <Box>
                         <form action="" onSubmit={handleSubmit}>
                             <FormControl
@@ -75,12 +69,16 @@ const BookingRightSide = ({ data, error, loading }) => {
                                 sx={{ m: 1, width: "50ch" }}
                                 variant="outlined"
                             >
-                                <InputLabel htmlFor="outlined-adornment-name">Doctor's Name</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-name"
+                            
+                                <OutlinedInput 
+                                    
                                     type="text"
-                                    label="doctor's name"
+                                    
                                     inputRef={doctorNameRef}
+                                    value={name}
+                                    disabled
+                                    focused 
+                                    
                                     
                                 />
                             </FormControl>{" "}
@@ -89,25 +87,36 @@ const BookingRightSide = ({ data, error, loading }) => {
                                 sx={{ m: 1, width: "50ch" }}
                                 variant="outlined"
                             >
-                                <InputLabel htmlFor="outlined-adornment-name">Service</InputLabel>
-                                <OutlinedInput
+                            
+                                <OutlinedInput 
                                     id="outlined-adornment-name"
                                     type="text"
-                                    label="doctor's name"
+                                   
                                     inputRef={serviceRef}
+                                    value={specialized}
+                                    disabled
+                                    focused
                                     
                                 />
                             </FormControl>{" "}
+
+                            <Box>
+                        <img className="booking-img"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Patient_logo_2019.svg/1200px-Patient_logo_2019.svg.png"
+                            alt="patient img"
+                            width={"390px"}
+                        />
+                    </Box>
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
                                 variant="outlined"
                             >
-                                <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
+                                <InputLabel htmlFor="outlined-adornment-name">Patient Name</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-name"
                                     type="text"
-                                    label="name"
+                                    label="patient name"
                                     inputRef={nameRef}
                                 />
                             </FormControl>{" "}
