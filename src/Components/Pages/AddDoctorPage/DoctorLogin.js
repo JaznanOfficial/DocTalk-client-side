@@ -14,9 +14,8 @@ import logo from "../../../images/logo.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { NavLink } from "react-router-dom";
-import "./SignUp.css";
 
-const SignUp = () => {
+const DoctorLogin = () => {
     // ----------------------
     const [show, setShow] = React.useState(false);
 
@@ -31,10 +30,7 @@ const SignUp = () => {
     };
 
     return (
-        <div
-            className="sign-up"
-            style={{ padding: "100px 10px", textAlign: "center", margin: "0" }}
-        >
+        <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>
             <Container style={{ textAlign: "center" }}>
                 <Box
                     className="sign-up-box"
@@ -42,13 +38,14 @@ const SignUp = () => {
                         border: "1px solid #565ACF",
                         borderRadius: "50px",
                         backgroundColor: "#FFFFFF",
+                        width: "520px",
                         margin: "0 auto",
                         paddingBottom: "40px",
                     }}
                 >
                     <Box>
                         <img
-                            src={logo}
+                            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKFcqIIPo_uiF78vGIzlthccy7H3LLfFSrDQ&usqp=CAU'
                             alt="img not found"
                             width={"200px"}
                             heigt={"100px"}
@@ -56,20 +53,7 @@ const SignUp = () => {
                         />
                     </Box>
                     <Box>
-                        <form>
-                            <FormControl
-                                className="input-field"
-                                sx={{ m: 1, width: "50ch" }}
-                                variant="outlined"
-                            >
-                                <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-name"
-                                    type="name"
-                                    label="name"
-                                />
-                            </FormControl>{" "}
-                            <br />
+                        <form action="">
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
@@ -127,15 +111,19 @@ const SignUp = () => {
                                     textTransform: "none",
                                 }}
                             >
-                                Register
+                                Login
                             </Button>
                         </form>
+
+                        <h3 style={{ color: "#565ACF" }}>Or</h3>
+
+                        
 
                         <Container>
                             <hr style={{ border: "1px solid #EAE7FF" }} />
                         </Container>
-                        <h3 style={{ color: "#44446E" }}>Already have any account? </h3>
-                        <NavLink to="/sign-in">
+                        <h3 style={{ color: "#44446E" }}>Don't have any account?</h3>
+                        <NavLink to="/join-doctor">
                             <Button
                                 className="sign-up-btn"
                                 type="submit"
@@ -153,14 +141,14 @@ const SignUp = () => {
                                     textTransform: "none",
                                 }}
                             >
-                                Login
+                                Register
                             </Button>
                         </NavLink>
                     </Box>
                 </Box>
             </Container>
-        </div>
+        </Box>
     );
 };
 
-export default SignUp;
+export default DoctorLogin;

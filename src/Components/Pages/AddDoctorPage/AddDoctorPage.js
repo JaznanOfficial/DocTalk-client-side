@@ -3,38 +3,22 @@ import {
     Button,
     Container,
     FormControl,
-    IconButton,
-    InputAdornment,
+    FormControlLabel,
+    FormLabel,
     InputLabel,
+    MenuItem,
     OutlinedInput,
+    Radio,
+    RadioGroup,
+    Select,
 } from "@mui/material";
 import React from "react";
-import "../SignupPage/SignUp.css";
-import logo from "../../../images/logo.png";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { NavLink } from "react-router-dom";
-import "./SignUp.css";
+import logo from "../../../images/logo.png";
 
-const SignUp = () => {
-    // ----------------------
-    const [show, setShow] = React.useState(false);
-
-    // ----------------------
-    const handleClickShowPassword = () => {
-        setShow(!show);
-    };
-
-    // ---------------------
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
-
+const AddDoctorPage = () => {
     return (
-        <div
-            className="sign-up"
-            style={{ padding: "100px 10px", textAlign: "center", margin: "0" }}
-        >
+        <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>
             <Container style={{ textAlign: "center" }}>
                 <Box
                     className="sign-up-box"
@@ -42,13 +26,14 @@ const SignUp = () => {
                         border: "1px solid #565ACF",
                         borderRadius: "50px",
                         backgroundColor: "#FFFFFF",
+                        width: "520px",
                         margin: "0 auto",
                         paddingBottom: "40px",
                     }}
                 >
                     <Box>
                         <img
-                            src={logo}
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKFcqIIPo_uiF78vGIzlthccy7H3LLfFSrDQ&usqp=CAU"
                             alt="img not found"
                             width={"200px"}
                             heigt={"100px"}
@@ -56,7 +41,7 @@ const SignUp = () => {
                         />
                     </Box>
                     <Box>
-                        <form>
+                        <form action="">
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
@@ -65,7 +50,7 @@ const SignUp = () => {
                                 <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-name"
-                                    type="name"
+                                    type="text"
                                     label="name"
                                 />
                             </FormControl>{" "}
@@ -83,32 +68,78 @@ const SignUp = () => {
                                 />
                             </FormControl>{" "}
                             <br />
+                            <FormControl style={{ width: "87%", textAlign: "left" }}>
+                                <InputLabel id="demo-simple-select-label">
+                                    Specialized in
+                                </InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    //   value={age}
+                                    label="Specialized in"
+                                    //   onChange={handleChange}
+                                >
+                                    <MenuItem value={"Body Surgery"}>Body Surgery</MenuItem>
+                                    <MenuItem value={"Dental Care"}>Dental Care</MenuItem>
+                                    <MenuItem value={"Eye Care"}>Eye Care</MenuItem>
+                                    <MenuItem value={"Blood Cancer"}>Blood Cancer</MenuItem>
+                                    <MenuItem value={"Neuro Surgery"}>Nreuro Surgery</MenuItem>
+                                    <MenuItem value={"Allergy Treat"}>Allergy Treat</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <br />
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
                                 variant="outlined"
                             >
-                                <InputLabel htmlFor="outlined-adornment-password">
-                                    Password
-                                </InputLabel>
+                                <InputLabel htmlFor="outlined-adornment-name">Location</InputLabel>
                                 <OutlinedInput
-                                    id="outlined-adornment-password"
-                                    type={show ? "text" : "password"}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {show ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    label="Password"
+                                    id="outlined-adornment-name"
+                                    type="text"
+                                    label="Location"
                                 />
                             </FormControl>{" "}
+                            <br />
+                            <FormControl
+                                className="input-field"
+                                sx={{ m: 1, width: "50ch" }}
+                                variant="outlined"
+                            >
+                                <InputLabel htmlFor="outlined-adornment-name">Fees</InputLabel>
+                                <OutlinedInput
+                                    id="outlined-adornment-name"
+                                    type="number"
+                                    label="Fees"
+                                />
+                            </FormControl>{" "}
+                            <br />
+                            <FormControl>
+                                <FormLabel id="demo-row-radio-buttons-group-label">
+                                    Gender
+                                </FormLabel>
+                                <RadioGroup
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                >
+                                    <FormControlLabel
+                                        value="male"
+                                        control={<Radio />}
+                                        label="Male"
+                                    />
+                                    <FormControlLabel
+                                        value="female"
+                                        control={<Radio />}
+                                        label="Female"
+                                    />
+                                    <FormControlLabel
+                                        value="other"
+                                        control={<Radio />}
+                                        label="Other"
+                                    />
+                                </RadioGroup>
+                            </FormControl>
                             <br />
                             <Button
                                 className="sign-up-btn"
@@ -131,11 +162,13 @@ const SignUp = () => {
                             </Button>
                         </form>
 
+                        <h3 style={{ color: "#565ACF" }}>Or</h3>
+
                         <Container>
                             <hr style={{ border: "1px solid #EAE7FF" }} />
                         </Container>
-                        <h3 style={{ color: "#44446E" }}>Already have any account? </h3>
-                        <NavLink to="/sign-in">
+                        <h3 style={{ color: "#44446E" }}>Already have any account?</h3>
+                        <NavLink to="/doctor-login">
                             <Button
                                 className="sign-up-btn"
                                 type="submit"
@@ -159,8 +192,8 @@ const SignUp = () => {
                     </Box>
                 </Box>
             </Container>
-        </div>
+        </Box>
     );
 };
 
-export default SignUp;
+export default AddDoctorPage;
