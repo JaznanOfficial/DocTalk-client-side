@@ -15,6 +15,7 @@ import BookingPage from "./Components/Pages/BookingPage/BookingPage";
 import PaymentPage from "./Components/Pages/PaymentPage/PaymentPage";
 import AddDoctorPage from "./Components/Pages/AddDoctorPage/AddDoctorPage";
 import DoctorLogin from "./Components/Pages/AddDoctorPage/DoctorLogin";
+import MyBookingPage from "./Components/Pages/MyBookingPage/MyBookingPage";
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/booking/:id" element={<BookingPage></BookingPage>}></Route>
                 <Route path="/payment/:id" element={<PaymentPage></PaymentPage>}></Route>
                 <Route path="/join-doctor" element={<AddDoctorPage></AddDoctorPage>}></Route>
+                <Route path="/patient-booking" element={<MyBookingPage></MyBookingPage>}></Route>
                 <Route path="/doctor-login" element={<DoctorLogin></DoctorLogin>}></Route>
                 <Route path="/sign-in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign-up" element={<SignUp></SignUp>}></Route>
