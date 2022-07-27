@@ -1,0 +1,33 @@
+.boooking-div{
+  height: 32rem;
+  overflow: scroll;
+  padding: 0 10px;
+}
+
+.booking-header {
+    background-color: #353535;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+  }
+
+
+.booking-table{
+    margin-top: 30px;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0px 0px 9px 5px rgba(0,0,0,0.1);
+    overflow-wrap: break-word;
+    border-radius: 10px;
+    
+}

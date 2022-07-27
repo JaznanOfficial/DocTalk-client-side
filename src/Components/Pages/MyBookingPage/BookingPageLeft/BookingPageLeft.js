@@ -5,7 +5,10 @@ import "./BookingPageLeft.css";
 const BookingPageLeft = () => {
     return (
         <Grid item xs={4} sm={8} md={4}>
-            <Box class="patient-profile-card" style={{ textAlign: "center" }}>
+            <Box
+                class="patient-profile-card"
+                style={{ textAlign: "center", margin: 0, padding: "0" }}
+            >
                 <Box class="profile-banner" style={{ textAlign: "center" }}>
                     <img
                         src="https://shreethemes.in/doctris/layouts/assets/images/bg/bg-profile.jpg"
@@ -16,7 +19,10 @@ const BookingPageLeft = () => {
                     />
                 </Box>
 
-                <Box class="text-center avatar-profile margin-nagative mt-n5 position-relative pb-4 border-bottom">
+                <Box
+                    class="text-center avatar-profile margin-nagative mt-n5 position-relative pb-4 border-bottom"
+                    style={{ position: "relative", top: "-50px" }}
+                >
                     <img
                         src="https://shreethemes.in/doctris/layouts/assets/images/client/09.jpg"
                         class="rounded-circle shadow-md avatar avatar-md-md"
@@ -25,51 +31,43 @@ const BookingPageLeft = () => {
                         height={"100px"}
                         style={{ margin: "0 auto", borderRadius: "50%" }}
                     />
-                    <h5 class="mt-3 mb-1">Christopher Burrell</h5>
-                    <p class="text-muted mb-0">25 Years old</p>
+                    <h3 style={{ color: "#E12454" }}>Christopher Burrell</h3>
+                    <hr style={{ border: "1px solid #EAE7FF" }} />
                 </Box>
 
-                <div class="list-unstyled p-4">
-                    <div class="progress-box mb-4">
-                        <h6 class="title">Complete your profile</h6>
-                        <div class="progress">
-                            <div
-                                class="progress-bar position-relative bg-primary"
-                                style={{ width: "89%" }}
-                            >
-                                <div class="progress-value d-block text-muted h6">89%</div>
-                            </div>
+                <div style={{ position: "relative", top: "-50px" }}>
+                    
+
+                    <div style={{margin:'20px', textAlign:'left'}}>
+                        <div style={{display:'flex'}}>
+                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-user"></i></h5>
+                            <h5 style={{marginLeft:'10px'}}>Gender</h5>
+                            <h5 style={{ marginLeft: '10px', color:'gray' }}>Female</h5>
                         </div>
-                    </div>
 
-                    <div class="d-flex align-items-center mt-2">
-                        <i class="uil uil-user align-text-bottom text-primary h5 mb-0 me-2"></i>
-                        <h6 class="mb-0">Gender</h6>
-                        <p class="text-muted mb-0 ms-2">Female</p>
-                    </div>
+                        <div style={{display:'flex'}}>
+                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-envelope"></i></h5>
+                            <h5 style={{marginLeft:'10px'}}>Email</h5>
+                            <h5 style={{ marginLeft: '10px', color:'gray' }}>asd@efj</h5>
+                        </div>
 
-                    <div class="d-flex align-items-center mt-2">
-                        <i class="uil uil-envelope align-text-bottom text-primary h5 mb-0 me-2"></i>
-                        <h6 class="mb-0">Birthday</h6>
-                        <p class="text-muted mb-0 ms-2">19th January 1995</p>
-                    </div>
+                        <div style={{display:'flex'}}>
+                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-book-open"></i></h5>
+                            <h5 style={{marginLeft:'10px'}}>Phone No.</h5>
+                            <h5 style={{ marginLeft: '10px', color:'gray' }}>+(125) 458-8547</h5>
+                        </div>
 
-                    <div class="d-flex align-items-center mt-2">
-                        <i class="uil uil-book-open align-text-bottom text-primary h5 mb-0 me-2"></i>
-                        <h6 class="mb-0">Phone No.</h6>
-                        <p class="text-muted mb-0 ms-2">+(125) 458-8547</p>
-                    </div>
+                        <div style={{display:'flex'}}>
+                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-italic"></i></h5>
+                            <h5 style={{marginLeft:'10px'}}>Address</h5>
+                            <h5 style={{ marginLeft: '10px', color:'gray' }}>Sydney, Australia</h5>
+                        </div>
 
-                    <div class="d-flex align-items-center mt-2">
-                        <i class="uil uil-italic align-text-bottom text-primary h5 mb-0 me-2"></i>
-                        <h6 class="mb-0">Address</h6>
-                        <p class="text-muted mb-0 ms-2">Sydney, Australia</p>
-                    </div>
-
-                    <div class="d-flex align-items-center mt-2">
-                        <i class="uil uil-medical-drip align-text-bottom text-primary h5 mb-0 me-2"></i>
-                        <h6 class="mb-0">Blood Group</h6>
-                        <p class="text-muted mb-0 ms-2">B +</p>
+                        <div style={{display:'flex'}}>
+                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-hand-holding-medical"></i></h5>
+                            <h5 style={{marginLeft:'10px'}}>Blood Group</h5>
+                            <h5 style={{ marginLeft: '10px', color:'gray' }}>B +</h5>
+                        </div>
                     </div>
                 </div>
             </Box>
