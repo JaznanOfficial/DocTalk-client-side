@@ -1,8 +1,27 @@
-import { Box, Button, Container, Grid } from "@mui/material";
+import { Box, Button, Container, Grid, Modal, Typography } from "@mui/material";
 import React from "react";
 import "./BookingPageLeft.css";
 
 const BookingPageLeft = () => {
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    const style = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      };
+      
+
+
     return (
         <Grid item xs={4} sm={8} md={4}>
             <Box
@@ -77,17 +96,31 @@ const BookingPageLeft = () => {
                             <h5 style={{ marginLeft: "10px", color: "gray" }}>B +</h5>
                         </div>
                     </div>
-                    <Button
-                        size="small"
+                    <div>
+                        <Button size="small"
                         color="error"
                         style={{
                             cursor: "pointer",
                             color: "#F1386A",
                             borderColor: "#F1386A",
-                        }}
-                    >
-                        Edit Profile
-                    </Button>
+                        }} onClick={handleOpen}>Edit Profile</Button>
+                        <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <Box sx={style}>
+                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                    Text in a modal
+                                </Typography>
+                                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                                </Typography>
+                            </Box>
+                        </Modal>
+                    </div>
+                   
                 </div>
             </Box>
         </Grid>
