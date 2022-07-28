@@ -31,7 +31,7 @@ function App() {
                 <Route path="/booking/:id" element={<BookingPage></BookingPage>}></Route>
                 <Route path="/payment/:id" element={<PaymentPage></PaymentPage>}></Route>
                 <Route path="/join-doctor" element={<AddDoctorPage></AddDoctorPage>}></Route>
-                <Route path="/patient-booking" element={<MyBookingPage></MyBookingPage>}></Route>
+                <Route path="/profile-and-booking" element={<MyBookingPage></MyBookingPage>}></Route>
                 <Route path="/doctor-login" element={<DoctorLogin></DoctorLogin>}></Route>
                 <Route path="/sign-in" element={<SignIn></SignIn>}></Route>
                 <Route path="/sign-up" element={<SignUp></SignUp>}></Route>

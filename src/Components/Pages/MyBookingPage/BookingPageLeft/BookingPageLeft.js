@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Button, Container, Grid } from "@mui/material";
 import React from "react";
 import "./BookingPageLeft.css";
 
@@ -36,39 +36,58 @@ const BookingPageLeft = () => {
                 </Box>
 
                 <div style={{ position: "relative", top: "-50px" }}>
-                    
-
-                    <div style={{margin:'20px', textAlign:'left'}}>
-                        <div style={{display:'flex'}}>
-                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-user"></i></h5>
-                            <h5 style={{marginLeft:'10px'}}>Gender</h5>
-                            <h5 style={{ marginLeft: '10px', color:'gray' }}>Female</h5>
+                    <div style={{ margin: "20px", textAlign: "left" }}>
+                        <div style={{ display: "flex" }}>
+                            <h5 style={{ color: "#215AEE" }}>
+                                <i class="fa-solid fa-user"></i>
+                            </h5>
+                            <h5 style={{ marginLeft: "10px" }}>Gender</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>Female</h5>
                         </div>
 
-                        <div style={{display:'flex'}}>
-                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-envelope"></i></h5>
-                            <h5 style={{marginLeft:'10px'}}>Email</h5>
-                            <h5 style={{ marginLeft: '10px', color:'gray' }}>asd@efj</h5>
+                        <div style={{ display: "flex" }}>
+                            <h5 style={{ color: "#215AEE" }}>
+                                <i class="fa-solid fa-envelope"></i>
+                            </h5>
+                            <h5 style={{ marginLeft: "10px" }}>Email</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>asd@efj</h5>
                         </div>
 
-                        <div style={{display:'flex'}}>
-                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-book-open"></i></h5>
-                            <h5 style={{marginLeft:'10px'}}>Phone No.</h5>
-                            <h5 style={{ marginLeft: '10px', color:'gray' }}>+(125) 458-8547</h5>
+                        <div style={{ display: "flex" }}>
+                            <h5 style={{ color: "#215AEE" }}>
+                                <i class="fa-solid fa-book-open"></i>
+                            </h5>
+                            <h5 style={{ marginLeft: "10px" }}>Phone No.</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>+(125) 458-8547</h5>
                         </div>
 
-                        <div style={{display:'flex'}}>
-                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-italic"></i></h5>
-                            <h5 style={{marginLeft:'10px'}}>Address</h5>
-                            <h5 style={{ marginLeft: '10px', color:'gray' }}>Sydney, Australia</h5>
+                        <div style={{ display: "flex" }}>
+                            <h5 style={{ color: "#215AEE" }}>
+                                <i class="fa-solid fa-italic"></i>
+                            </h5>
+                            <h5 style={{ marginLeft: "10px" }}>Address</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>Sydney, Australia</h5>
                         </div>
 
-                        <div style={{display:'flex'}}>
-                            <h5 style={{color:'#215AEE'}}><i class="fa-solid fa-hand-holding-medical"></i></h5>
-                            <h5 style={{marginLeft:'10px'}}>Blood Group</h5>
-                            <h5 style={{ marginLeft: '10px', color:'gray' }}>B +</h5>
+                        <div style={{ display: "flex" }}>
+                            <h5 style={{ color: "#215AEE" }}>
+                                <i class="fa-solid fa-hand-holding-medical"></i>
+                            </h5>
+                            <h5 style={{ marginLeft: "10px" }}>Blood Group</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>B +</h5>
                         </div>
                     </div>
+                    <Button
+                        size="small"
+                        color="error"
+                        style={{
+                            cursor: "pointer",
+                            color: "#F1386A",
+                            borderColor: "#F1386A",
+                        }}
+                    >
+                        Edit Profile
+                    </Button>
                 </div>
             </Box>
         </Grid>

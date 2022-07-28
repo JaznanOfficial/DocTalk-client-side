@@ -166,8 +166,7 @@ const Navigation = () => {
                                     sx={{ display: "flex", flexDirection: "column" }}
                                     className="responsive-menu-bar"
                                 >
-                                    <NavLink to="profile">Profile</NavLink>
-                                    <NavLink to="patient-booking">My Booking</NavLink>
+                                    <NavLink to="profile-and-booking">Profile & Booking</NavLink>
 
                                     <NavLink to="logout">Log Out</NavLink>
                                 </Box>
