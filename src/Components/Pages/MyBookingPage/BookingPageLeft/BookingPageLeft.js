@@ -115,7 +115,7 @@ const BookingPageLeft = () => {
                                     Text in a modal
                                 </Typography>
                                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                    Duis mollis, est non commodo luctus, nisi erat porttitor ligu
+                                    Duis mollis, est non commodo luctus, nisi erat porttitor
                                 </Typography>
                             </Box>
                         </Modal>
