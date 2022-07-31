@@ -8,7 +8,6 @@ import "../Homepages/SingleService/SingleService.css";
 
 const DoctorsPage = () => {
     const { category } = useParams();
-    console.log(category);
     const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/doctors/${category}`);
     console.log(data);
 

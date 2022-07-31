@@ -8,13 +8,13 @@ import {
     TextField,
 } from "@mui/material";
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../SignupPage/SignUp.css";
 import BookingLeftSide from "./BookingLeftSide";
 
 const BookingRightSide = ({ data, error, loading }) => {
     const { _id, name, specialized } = data;
-
+    const navigate = useNavigate();
     const date = new Date();
     const [today, setToday] = React.useState(date.toISOString().split("T")[0]);
    
@@ -38,10 +38,27 @@ const BookingRightSide = ({ data, error, loading }) => {
         const number = numberRef.current.value;
         const address = addressRef.current.value;
         const date = dateRef.current.value;
-        console.log({doctorName,serviceName, patientName,email,number,address,date});
+        console.log({ doctorName, serviceName, patientName, email, number, address, date });
+        const bookingData = { doctorName, serviceName, patientName, email, number, address, date }
 
+        fetch(`https://doctalk-server.herokuapp.com/api/booking`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(bookingData)
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(res.statusText);
+                }
+                return (
+                    
+                    navigate(`/payment/${_id}`)
+                    
+                )
+            })
     }
-
 
 
     return (
@@ -184,7 +201,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                             </FormControl>{" "}
                             <br />
                             <br />
-                            <Link to={`/payment/${_id}`}>
+                            {/* <Link to={`/payment/${_id}`}> */}
                             <Button
                                 className="sign-up-btn"
                                 type="submit"
@@ -204,8 +221,9 @@ const BookingRightSide = ({ data, error, loading }) => {
                             >
                                 Book
                             </Button>
-                            </Link>
+                            {/* </Link> */}
                         </form>
+                        
                     </Box>
                 </Box>
             </Container>
