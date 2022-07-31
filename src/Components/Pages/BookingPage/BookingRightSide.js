@@ -8,7 +8,7 @@ import {
     TextField,
 } from "@mui/material";
 import React, { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../SignupPage/SignUp.css";
 import BookingLeftSide from "./BookingLeftSide";
 
@@ -38,7 +38,6 @@ const BookingRightSide = ({ data, error, loading }) => {
         const number = numberRef.current.value;
         const address = addressRef.current.value;
         const date = dateRef.current.value;
-        console.log({ doctorName, serviceName, patientName, email, number, address, date });
         const bookingData = { doctorName, serviceName, patientName, email, number, address, date }
 
         fetch(`https://doctalk-server.herokuapp.com/api/booking`, {

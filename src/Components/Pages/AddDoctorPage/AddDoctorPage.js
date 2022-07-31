@@ -12,11 +12,35 @@ import {
     RadioGroup,
     Select,
 } from "@mui/material";
-import React from "react";
+import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../../images/logo.png";
 
 const AddDoctorPage = () => {
+
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const serviceRef = useRef();
+    const locationRef = useRef();
+    const feesRef = useRef();
+    const genderRef = useRef();
+    const maleRef = useRef();
+    const femaleRef = useRef();
+    const otherRef = useRef();
+
+
+    const handleAddDoctor = (e) => {
+        e.preventDefault();
+        // const name = nameRef.current.value;
+        // const email = emailRef.current.value;
+        // const service = serviceRef.current.value;
+        // const location = locationRef.current.value;
+        // const fees = feesRef.current.value;
+        // const gender = genderRef.current.value;
+
+        console.log(maleRef.current.value);
+    }
+
     return (
         <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>
             <Container style={{ textAlign: "center" }}>
@@ -41,7 +65,7 @@ const AddDoctorPage = () => {
                         />
                     </Box>
                     <Box>
-                        <form action="">
+                        <form action="" onSubmit={handleAddDoctor}>
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
@@ -52,6 +76,7 @@ const AddDoctorPage = () => {
                                     id="outlined-adornment-name"
                                     type="text"
                                     label="name"
+                                    inputRef={nameRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -65,6 +90,7 @@ const AddDoctorPage = () => {
                                     id="outlined-adornment-email"
                                     type="email"
                                     label="Email"
+                                    inputRef={emailRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -78,6 +104,7 @@ const AddDoctorPage = () => {
                                     //   value={age}
                                     label="Specialized in"
                                     //   onChange={handleChange}
+                                    inputRef={serviceRef}
                                 >
                                     <MenuItem value={"Body Surgery"}>Body Surgery</MenuItem>
                                     <MenuItem value={"Dental Care"}>Dental Care</MenuItem>
@@ -98,6 +125,7 @@ const AddDoctorPage = () => {
                                     id="outlined-adornment-name"
                                     type="text"
                                     label="Location"
+                                    inputRef={locationRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -111,6 +139,7 @@ const AddDoctorPage = () => {
                                     id="outlined-adornment-name"
                                     type="number"
                                     label="Fees"
+                                    inputRef={feesRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -122,21 +151,25 @@ const AddDoctorPage = () => {
                                     row
                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                     name="row-radio-buttons-group"
+                                    
                                 >
                                     <FormControlLabel
                                         value="male"
                                         control={<Radio />}
                                         label="Male"
+                                        inputRef={maleRef}
                                     />
                                     <FormControlLabel
                                         value="female"
                                         control={<Radio />}
                                         label="Female"
+                                        inputRef={femaleRef}
                                     />
                                     <FormControlLabel
                                         value="other"
                                         control={<Radio />}
                                         label="Other"
+                                        inputRef={otherRef}
                                     />
                                 </RadioGroup>
                             </FormControl>
