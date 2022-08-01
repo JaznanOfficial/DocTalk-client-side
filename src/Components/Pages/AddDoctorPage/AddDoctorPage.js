@@ -12,18 +12,26 @@ import {
     RadioGroup,
     Select,
 } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 import logo from "../../../images/logo.png";
 
 const AddDoctorPage = () => {
+
+
+    const [gender, setGender] = useState('')
+    
+    const handleGender = (e) => {
+        setGender(e.target.value);
+    }
 
     const nameRef = useRef();
     const emailRef = useRef();
     const serviceRef = useRef();
     const locationRef = useRef();
     const feesRef = useRef();
-    const genderRef = useRef();
+    
     const maleRef = useRef();
     const femaleRef = useRef();
     const otherRef = useRef();
@@ -31,14 +39,42 @@ const AddDoctorPage = () => {
 
     const handleAddDoctor = (e) => {
         e.preventDefault();
-        // const name = nameRef.current.value;
-        // const email = emailRef.current.value;
-        // const service = serviceRef.current.value;
-        // const location = locationRef.current.value;
-        // const fees = feesRef.current.value;
-        // const gender = genderRef.current.value;
+        const name = nameRef.current.value;
+        const email = emailRef.current.value;
+        const service = serviceRef.current.value;
+        const location = locationRef.current.value;
+        const fees = feesRef.current.value;
+        
 
-        console.log(maleRef.current.value);
+        const doctorData = { name, email, service, location, fees, gender };
+        console.log(e.target);
+
+        fetch(`https://doctalk-server.herokuapp.com/api/add-doctor`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(doctorData)
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(res.statusText);
+                }
+                return(
+                new Swal({
+                    title: "Good job!",
+                    text: "Your information successfully sent! Please stay with us",
+                    icon: "success",
+                }),
+                nameRef.current.value = '',
+                emailRef.current.value = '',
+                serviceRef.current.value = '',
+                locationRef.current.value = '',
+                    feesRef.current.value = '',
+                    window.location.reload()
+                )
+            })
+
     }
 
     return (
@@ -77,6 +113,7 @@ const AddDoctorPage = () => {
                                     type="text"
                                     label="name"
                                     inputRef={nameRef}
+                                    required
                                 />
                             </FormControl>{" "}
                             <br />
@@ -91,6 +128,7 @@ const AddDoctorPage = () => {
                                     type="email"
                                     label="Email"
                                     inputRef={emailRef}
+                                    required
                                 />
                             </FormControl>{" "}
                             <br />
@@ -105,6 +143,7 @@ const AddDoctorPage = () => {
                                     label="Specialized in"
                                     //   onChange={handleChange}
                                     inputRef={serviceRef}
+                                    required
                                 >
                                     <MenuItem value={"Body Surgery"}>Body Surgery</MenuItem>
                                     <MenuItem value={"Dental Care"}>Dental Care</MenuItem>
@@ -126,6 +165,7 @@ const AddDoctorPage = () => {
                                     type="text"
                                     label="Location"
                                     inputRef={locationRef}
+                                    required
                                 />
                             </FormControl>{" "}
                             <br />
@@ -140,6 +180,7 @@ const AddDoctorPage = () => {
                                     type="number"
                                     label="Fees"
                                     inputRef={feesRef}
+                                    required
                                 />
                             </FormControl>{" "}
                             <br />
@@ -151,7 +192,8 @@ const AddDoctorPage = () => {
                                     row
                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                     name="row-radio-buttons-group"
-                                    
+                                    onChange={handleGender}
+                                    required
                                 >
                                     <FormControlLabel
                                         value="male"

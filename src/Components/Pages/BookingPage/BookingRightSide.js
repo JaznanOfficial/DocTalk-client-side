@@ -38,7 +38,7 @@ const BookingRightSide = ({ data, error, loading }) => {
         const number = numberRef.current.value;
         const address = addressRef.current.value;
         const date = dateRef.current.value;
-        const bookingData = { doctorName, serviceName, patientName, email, number, address, date }
+        const bookingData = { doctorName, serviceName, patientName, email, number, address, date, status: "pending" };
 
         fetch(`https://doctalk-server.herokuapp.com/api/booking`, {
             method: "POST",
