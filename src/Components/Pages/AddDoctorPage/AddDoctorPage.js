@@ -41,12 +41,12 @@ const AddDoctorPage = () => {
         e.preventDefault();
         const name = nameRef.current.value;
         const email = emailRef.current.value;
-        const service = serviceRef.current.value;
+        const specialized = serviceRef.current.value;
         const location = locationRef.current.value;
         const fees = feesRef.current.value;
         
 
-        const doctorData = { name, email, service, location, fees, gender };
+        const doctorData = { name, email, specialized, location, fees, gender };
         console.log(e.target);
 
         fetch(`https://doctalk-server.herokuapp.com/api/add-doctor`, {
@@ -237,13 +237,13 @@ const AddDoctorPage = () => {
                             </Button>
                         </form>
 
-                        <h3 style={{ color: "#565ACF" }}>Or</h3>
+                        {/* <h3 style={{ color: "#565ACF" }}>Or</h3>
 
                         <Container>
                             <hr style={{ border: "1px solid #EAE7FF" }} />
                         </Container>
-                        <h3 style={{ color: "#44446E" }}>Already have any account?</h3>
-                        <NavLink to="/doctor-login">
+                        <h3 style={{ color: "#44446E" }}>Already have any account?</h3> */}
+                        {/* <NavLink to="/doctor-login">
                             <Button
                                 className="sign-up-btn"
                                 type="submit"
@@ -263,7 +263,7 @@ const AddDoctorPage = () => {
                             >
                                 Login
                             </Button>
-                        </NavLink>
+                        </NavLink> */}
                     </Box>
                 </Box>
             </Container>
