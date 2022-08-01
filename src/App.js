@@ -12,10 +12,10 @@ import SignUp from "./Components/Pages/SignupPage/SignUp";
 import DoctorsPage from "./Components/Pages/DoctorsPage/DoctorsPage";
 import Footer from "./Components/Pages/Homepages/Footer/Footer";
 import BookingPage from "./Components/Pages/BookingPage/BookingPage";
-import PaymentPage from "./Components/Pages/PaymentPage/PaymentPage";
 import AddDoctorPage from "./Components/Pages/AddDoctorPage/AddDoctorPage";
 import DoctorLogin from "./Components/Pages/AddDoctorPage/DoctorLogin";
 import MyBookingPage from "./Components/Pages/MyBookingPage/MyBookingPage";
+import StripePage from "./Components/Pages/StripePage/StripePage";
 
 function App() {
     return (
@@ -29,7 +29,7 @@ function App() {
                 <Route path="/about" element={<AboutPage></AboutPage>}></Route>
                 <Route path="/contact" element={<ContactPage></ContactPage>}></Route>
                 <Route path="/booking/:id" element={<BookingPage></BookingPage>}></Route>
-                <Route path="/payment/:id" element={<PaymentPage></PaymentPage>}></Route>
+                <Route path="/payment/:id" element={<StripePage></StripePage>}></Route>
                 <Route path="/join-doctor" element={<AddDoctorPage></AddDoctorPage>}></Route>
                 <Route path="/profile-and-booking" element={<MyBookingPage></MyBookingPage>}></Route>
                 <Route path="/doctor-login" element={<DoctorLogin></DoctorLogin>}></Route>

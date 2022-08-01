@@ -16,21 +16,55 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../CustomHooks/useFetch";
 import { css } from "@emotion/react";
 import { ClockLoader } from "react-spinners";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import Swal from "sweetalert2";
 
 const PaymentPage = () => {
     const { id } = useParams();
 
-    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
+    const { data, loading, error, setError } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
     const override = css`
-    display: block;
-    margin: 0 auto;
-    border-color: red;
-`;
+        display: block;
+        margin: 0 auto;
+        border-color: red;
+    `;
+
+    const stripe = useStripe();
+    const elements = useElements();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (elements == null) {
+            return;
+        }
+
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: "card",
+            card: elements.getElement(CardElement),
+        });
+        if (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error.message}`,
+                
+              })
+        }
+        else {
+            console.log(paymentMethod);
+            new Swal({
+                title: "Good job!",
+                text: "Your information successfully sent! Please stay with us",
+                icon: "success",
+            });
+            e.target.reset();
+        }
+    };
 
     return (
         <>
-            
-        {error && <div>Error: {error.message}</div>}
+            {error && <div>Error: {error.message}</div>}
             {loading ? (
                 <ClockLoader
                     color="#E12454"
@@ -64,80 +98,34 @@ const PaymentPage = () => {
                                 />
                             </Box>
                             <Box>
-                                <form action="">
-                                    <FormControl
-                                        className="input-field"
-                                        sx={{ m: 1, width: "50ch" }}
-                                        variant="outlined"
-                                    >
-                                        <InputLabel htmlFor="outlined-adornment-name">
-                                            Card Number
-                                        </InputLabel>
-                                        <OutlinedInput
-                                            id="outlined-adornment-card"
-                                            type="text"
-                                            label="card number"
-                                        />
-                                    </FormControl>{" "}
-                                    <Grid
-                                        container
-                                        spacing={{ xs: 2, md: 3 }}
-                                        columns={{ xs: 4, sm: 8, md: 12 }}
-                                    >
-                                        <Grid item xs={4} sm={4} md={6}>
-                                            <FormControl
-                                                className="input-field"
-                                                sx={{ width: "18ch" }}
-                                                variant="outlined"
-                                            >
-                                                <InputLabel htmlFor="outlined-adornment-name">
-                                                    DD/YY
-                                                </InputLabel>
-                                                <OutlinedInput
-                                                    id="outlined-adornment-name"
-                                                    type="number"
-                                                    label="DD/YY"
-                                                />
-                                            </FormControl>{" "}
-                                        </Grid>
-                                        <Grid item xs={4} sm={4} md={6}>
-                                            <FormControl
-                                                className="input-field"
-                                                sx={{ width: "18ch" }}
-                                                variant="outlined"
-                                            >
-                                                <InputLabel htmlFor="outlined-adornment-name">
-                                                    CVV
-                                                </InputLabel>
-                                                <OutlinedInput
-                                                    id="outlined-adornment-name"
-                                                    type="number"
-                                                    label="cvv"
-                                                />
-                                            </FormControl>{" "}
-                                        </Grid>
-                                    </Grid>
-                                    <br />
-                                    <Button
-                                        className="sign-up-btn"
-                                        type="submit"
-                                        variant="contained"
-                                        color="primary"
-                                        style={{
-                                            width: "31ch",
-                                            color: "white",
-                                            margin: "5px 0px",
-                                            padding: "5px 10px",
-                                            fontSize: "25px",
-                                            backgroundColor: "#565ACF",
-                                            fontWeight: "400",
-                                            cursor: "pointer",
-                                            textTransform: "none",
-                                        }}
-                                    >
-                                        Pay ${data.fees}
-                                    </Button>
-                                </form>
+                                    <Box style={{margin:'0 50px'}}>
+                                    <form onSubmit={handleSubmit}>
+                                            <CardElement />
+                                            
+                                        <br />
+                                        <Button
+                                            className="sign-up-btn payment-btn"
+                                            type="submit"
+                                            variant="contained"
+                                            color="primary"
+                                            style={{
+                                                width: "31ch",
+                                                color: "white",
+                                                margin: "5px 0px",
+                                                padding: "5px 10px",
+                                                fontSize: "25px",
+                                                backgroundColor: "#565ACF",
+                                                fontWeight: "400",
+                                                cursor: "pointer",
+                                                textTransform: "none",
+                                            }}
+                                            disabled={!stripe || !elements}
+                                        >
+                                            Pay ${data.fees}
+                                        </Button>
+                                        </form>
+                                        
+                                </Box>
                             </Box>
                         </Box>
                     </Container>
