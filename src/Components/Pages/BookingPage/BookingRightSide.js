@@ -94,7 +94,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     value={name}
                                     disabled
                                     focused 
-                                    
+                                    required
                                     
                                 />
                             </FormControl>{" "}
@@ -112,7 +112,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     value={specialized}
                                     disabled
                                     focused
-                                    
+                                    required
                                 />
                             </FormControl>{" "}
 
@@ -134,6 +134,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     type="text"
                                     label="patient name"
                                     inputRef={nameRef}
+                                    required
                                 />
                             </FormControl>{" "}
                             <br />
@@ -148,6 +149,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     type="email"
                                     label="Email"
                                     inputRef={emailRef}
+                                    required
                                 />
                             </FormControl>{" "}
                             <br />
@@ -164,6 +166,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     maxLength='11'
                                     minLength='11'
                                     inputRef={numberRef}
+                                    required
                                     
                                 />
                             </FormControl>{" "}
@@ -180,6 +183,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     rows={4}
                                     defaultValue=""
                                     inputRef={addressRef}
+                                    required
                                 />
                             </FormControl>{" "}
                             <br />
@@ -196,6 +200,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     defaultValue={today}
                                     min={today}
                                     inputRef={dateRef}
+                                    required
                                 />
                             </FormControl>{" "}
                             <br />
