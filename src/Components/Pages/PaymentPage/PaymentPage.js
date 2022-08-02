@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PaymentPage.css";
 import {
     Box,
@@ -21,45 +21,96 @@ import Swal from "sweetalert2";
 
 const PaymentPage = () => {
     const { id } = useParams();
+    const [processing, setProcessing] = useState(false);
 
-    const { data, loading, error, setError } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
+    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
     const override = css`
         display: block;
         margin: 0 auto;
         border-color: red;
     `;
-
+    console.log(data);
+    const { fees } = data;
     const stripe = useStripe();
     const elements = useElements();
 
+    const [{clientSecret}, setClientSecret] = useState("");
+    console.log(clientSecret);
+
+    useEffect(() => {
+        fetch("https://doctalk-server.herokuapp.com/create-payment-intent", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({fees}),
+        })
+            .then((res) => res.json())
+            .then((data) => setClientSecret(data));
+    }, [fees]);
+
+    
+
+
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (elements == null) {
             return;
         }
-
+        const card = elements.getElement(CardElement);
+        setProcessing(true);
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
-            card: elements.getElement(CardElement),
+            card
         });
         if (error) {
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
+                icon: "error",
+                title: "Oops...",
                 text: `${error.message}`,
-                
-              })
+            });
+        } else {
+            console.log(paymentMethod);
+           
+        }
+
+
+        // payment intent---------------->
+
+        const {paymentIntent, error: intentError} = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+              payment_method: {
+                card: card,
+                billing_details: {
+                  name: 'Jenny Rosen',
+                },
+              },
+            },
+        );
+        
+        if (intentError) { 
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${intentError.message}`,
+            });
+            setProcessing(false);
         }
         else {
-            console.log(paymentMethod);
+            console.log(paymentIntent);
             new Swal({
                 title: "Good job!",
                 text: "Your information successfully sent! Please stay with us",
                 icon: "success",
             });
             e.target.reset();
+            setProcessing(true);
         }
+
+
     };
 
     return (
@@ -98,33 +149,34 @@ const PaymentPage = () => {
                                 />
                             </Box>
                             <Box>
-                                    <Box style={{margin:'0 50px'}}>
+                                <Box style={{ margin: "0 50px" }}>
                                     <form onSubmit={handleSubmit}>
-                                            <CardElement />
-                                            
+                                        <CardElement />
+
                                         <br />
-                                        <Button
-                                            className="sign-up-btn payment-btn"
-                                            type="submit"
-                                            variant="contained"
-                                            color="primary"
-                                            style={{
-                                                width: "31ch",
-                                                color: "white",
-                                                margin: "5px 0px",
-                                                padding: "5px 10px",
-                                                fontSize: "25px",
-                                                backgroundColor: "#565ACF",
-                                                fontWeight: "400",
-                                                cursor: "pointer",
-                                                textTransform: "none",
-                                            }}
-                                            disabled={!stripe || !elements}
-                                        >
-                                            Pay ${data.fees}
-                                        </Button>
-                                        </form>
-                                        
+                                            {
+                                                !processing && <Button
+                                                className="sign-up-btn payment-btn"
+                                                type="submit"
+                                                variant="contained"
+                                                color="primary"
+                                                style={{
+                                                    width: "31ch",
+                                                    color: "white",
+                                                    margin: "5px 0px",
+                                                    padding: "5px 10px",
+                                                    fontSize: "25px",
+                                                    backgroundColor: "#565ACF",
+                                                    fontWeight: "400",
+                                                    cursor: "pointer",
+                                                    textTransform: "none",
+                                                }}
+                                                disabled={!stripe || !elements}
+                                            >
+                                                Pay ${data.fees}
+                                            </Button>
+                                        }
+                                    </form>
                                 </Box>
                             </Box>
                         </Box>
