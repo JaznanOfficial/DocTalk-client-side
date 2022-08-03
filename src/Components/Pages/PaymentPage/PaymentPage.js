@@ -29,30 +29,26 @@ const PaymentPage = () => {
         margin: 0 auto;
         border-color: red;
     `;
-    console.log(data);
-    const { fees } = data;
+    const paymentData = data;
+    const { fees } = paymentData;
     const stripe = useStripe();
     const elements = useElements();
 
-    const [{clientSecret}, setClientSecret] = useState("");
+    const [{ clientSecret }, setClientSecret] = useState("");
     console.log(clientSecret);
 
     useEffect(() => {
-        fetch("https://doctalk-server.herokuapp.com/create-payment-intent", {
+        fetch("http://localhost:5000/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({fees}),
+            body: JSON.stringify(paymentData),
         })
             .then((res) => res.json())
-            .then((data) => setClientSecret(data));
-    }, [fees]);
+            .then((paymentIntentData) => setClientSecret(paymentIntentData));
+    }, [paymentData]);
 
-    
-
-
-    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -63,7 +59,7 @@ const PaymentPage = () => {
         setProcessing(true);
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
-            card
+            card,
         });
         if (error) {
             Swal.fire({
@@ -73,44 +69,60 @@ const PaymentPage = () => {
             });
         } else {
             console.log(paymentMethod);
-           
         }
-
 
         // payment intent---------------->
 
-        const {paymentIntent, error: intentError} = await stripe.confirmCardPayment(
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
             {
-              payment_method: {
-                card: card,
-                billing_details: {
-                  name: 'Jenny Rosen',
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: "Jenny Rosen",
+                    },
                 },
-              },
-            },
+            }
         );
-        
-        if (intentError) { 
+
+        if (intentError) {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
                 text: `${intentError.message}`,
             });
             setProcessing(false);
-        }
-        else {
+        } else {
             console.log(paymentIntent);
-            new Swal({
-                title: "Good job!",
-                text: "Your information successfully sent! Please stay with us",
-                icon: "success",
-            });
             e.target.reset();
             setProcessing(true);
+
+            fetch(`http://localhost:5000/api/booking?id=${id}`, {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({status: "paid"}),
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.acknowledged) {
+                        new Swal({
+                            title: "Good job!",
+                            text: "Your payment successfully done! Please stay with us",
+                            icon: "success",
+                        });
+                    }
+                    else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: `${intentError.message}`,
+                        });
+                    }
+                })
         }
-
-
     };
 
     return (
@@ -154,8 +166,8 @@ const PaymentPage = () => {
                                         <CardElement />
 
                                         <br />
-                                            {
-                                                !processing && <Button
+                                        {!processing && (
+                                            <Button
                                                 className="sign-up-btn payment-btn"
                                                 type="submit"
                                                 variant="contained"
@@ -175,7 +187,7 @@ const PaymentPage = () => {
                                             >
                                                 Pay ${data.fees}
                                             </Button>
-                                        }
+                                        )}
                                     </form>
                                 </Box>
                             </Box>
