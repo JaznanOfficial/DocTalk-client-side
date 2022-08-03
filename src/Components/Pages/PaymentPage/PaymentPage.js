@@ -97,7 +97,7 @@ const PaymentPage = () => {
             e.target.reset();
             setProcessing(true);
 
-            fetch(`http://localhost:5000/api/booking?id=${id}`, {
+            fetch(`https://doctalk-server.herokuapp.com/api/booking?id=${id}`, {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json",
