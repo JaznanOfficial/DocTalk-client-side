@@ -18,24 +18,21 @@ import Swal from "sweetalert2";
 import logo from "../../../images/logo.png";
 
 const AddDoctorPage = () => {
+    const [gender, setGender] = useState("");
 
-
-    const [gender, setGender] = useState('')
-    
     const handleGender = (e) => {
         setGender(e.target.value);
-    }
+    };
 
     const nameRef = useRef();
     const emailRef = useRef();
     const serviceRef = useRef();
     const locationRef = useRef();
     const feesRef = useRef();
-    
+
     const maleRef = useRef();
     const femaleRef = useRef();
     const otherRef = useRef();
-
 
     const handleAddDoctor = (e) => {
         e.preventDefault();
@@ -44,38 +41,35 @@ const AddDoctorPage = () => {
         const specialized = serviceRef.current.value;
         const location = locationRef.current.value;
         const fees = feesRef.current.value;
-        
 
         const doctorData = { name, email, specialized, location, fees, gender };
         console.log(e.target);
 
-        fetch(`https://doctalk-server.herokuapp.com/api/add-doctor`, {
+        fetch(`http://localhost:5000/api/add-doctor`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(doctorData)
-        })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(res.statusText);
-                }
-                return(
+            body: JSON.stringify(doctorData),
+        }).then((res) => {
+            if (!res.ok) {
+                throw new Error(res.statusText);
+            }
+            return (
                 new Swal({
                     title: "Good job!",
                     text: "Your information successfully sent! Please stay with us",
                     icon: "success",
                 }),
-                nameRef.current.value = '',
-                emailRef.current.value = '',
-                serviceRef.current.value = '',
-                locationRef.current.value = '',
-                    feesRef.current.value = '',
-                    window.location.reload()
-                )
-            })
-
-    }
+                (nameRef.current.value = ""),
+                (emailRef.current.value = ""),
+                (serviceRef.current.value = ""),
+                (locationRef.current.value = ""),
+                (feesRef.current.value = ""),
+                window.location.reload()
+            );
+        });
+    };
 
     return (
         <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>

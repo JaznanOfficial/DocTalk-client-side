@@ -9,15 +9,16 @@ import {
 } from "@mui/material";
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import uuid from "react-uuid";
 import "../SignupPage/SignUp.css";
 import BookingLeftSide from "./BookingLeftSide";
 
 const BookingRightSide = ({ data, error, loading }) => {
-    const { _id, name, specialized } = data;
+    const { name, specialized } = data;
     const navigate = useNavigate();
     const date = new Date();
     const [today, setToday] = React.useState(date.toISOString().split("T")[0]);
-   
+
     const doctorNameRef = useRef();
     const serviceRef = useRef();
     const nameRef = useRef();
@@ -25,40 +26,42 @@ const BookingRightSide = ({ data, error, loading }) => {
     const numberRef = useRef();
     const addressRef = useRef();
     const dateRef = useRef();
+    const uid = uuid();
+    console.log(uid);
 
-    
-    
-    
-    const handleSubmit = (e) => { 
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const doctorName= doctorNameRef.current.value;
-        const serviceName= serviceRef.current.value;
+        const doctorName = doctorNameRef.current.value;
+        const serviceName = serviceRef.current.value;
         const patientName = nameRef.current.value;
         const email = emailRef.current.value;
         const number = numberRef.current.value;
         const address = addressRef.current.value;
         const date = dateRef.current.value;
-        const bookingData = { doctorName, serviceName, patientName, email, number, address, date, status: "pending" };
+        const bookingData = {
+            doctorName,
+            serviceName,
+            patientName,
+            email,
+            number,
+            address,
+            date,
+            uid,
+        };
 
-        fetch(`https://doctalk-server.herokuapp.com/api/booking`, {
+        fetch(`http://localhost:5000/api/booking`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(bookingData)
-        })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(res.statusText);
-                }
-                return (
-                    
-                    navigate(`/payment/${_id}`)
-                    
-                )
-            })
-    }
-
+            body: JSON.stringify(bookingData),
+        }).then((res) => {
+            if (!res.ok) {
+                throw new Error(res.statusText);
+            }
+            return navigate(`/payment/${uid}`);
+        });
+    };
 
     return (
         <div
@@ -77,7 +80,7 @@ const BookingRightSide = ({ data, error, loading }) => {
                     }}
                 >
                     <BookingLeftSide data={data}></BookingLeftSide>
-                    
+
                     <Box>
                         <form action="" onSubmit={handleSubmit}>
                             <FormControl
@@ -85,17 +88,13 @@ const BookingRightSide = ({ data, error, loading }) => {
                                 sx={{ m: 1, width: "50ch" }}
                                 variant="outlined"
                             >
-                            
-                                <OutlinedInput 
-                                    
+                                <OutlinedInput
                                     type="text"
-                                    
                                     inputRef={doctorNameRef}
                                     value={name}
                                     disabled
-                                    focused 
+                                    focused
                                     required
-                                    
                                 />
                             </FormControl>{" "}
                             <FormControl
@@ -103,11 +102,9 @@ const BookingRightSide = ({ data, error, loading }) => {
                                 sx={{ m: 1, width: "50ch" }}
                                 variant="outlined"
                             >
-                            
-                                <OutlinedInput 
+                                <OutlinedInput
                                     id="outlined-adornment-name"
                                     type="text"
-                                   
                                     inputRef={serviceRef}
                                     value={specialized}
                                     disabled
@@ -115,20 +112,22 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     required
                                 />
                             </FormControl>{" "}
-
                             <Box>
-                        <img className="booking-img"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Patient_logo_2019.svg/1200px-Patient_logo_2019.svg.png"
-                            alt="patient img"
-                            width={"390px"}
-                        />
-                    </Box>
+                                <img
+                                    className="booking-img"
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Patient_logo_2019.svg/1200px-Patient_logo_2019.svg.png"
+                                    alt="patient img"
+                                    width={"390px"}
+                                />
+                            </Box>
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
                                 variant="outlined"
                             >
-                                <InputLabel htmlFor="outlined-adornment-name">Patient Name</InputLabel>
+                                <InputLabel htmlFor="outlined-adornment-name">
+                                    Patient Name
+                                </InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-name"
                                     type="text"
@@ -163,11 +162,10 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     id="outlined-adornment-phone"
                                     type="number"
                                     label="phone"
-                                    maxLength='11'
-                                    minLength='11'
+                                    maxLength="11"
+                                    minLength="11"
                                     inputRef={numberRef}
                                     required
-                                    
                                 />
                             </FormControl>{" "}
                             <br />
@@ -227,7 +225,6 @@ const BookingRightSide = ({ data, error, loading }) => {
                             </Button>
                             {/* </Link> */}
                         </form>
-                        
                     </Box>
                 </Box>
             </Container>

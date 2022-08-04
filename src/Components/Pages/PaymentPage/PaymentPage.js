@@ -21,6 +21,7 @@ import Swal from "sweetalert2";
 
 const PaymentPage = () => {
     const { id } = useParams();
+    console.log(id);
     const [processing, setProcessing] = useState(false);
 
     const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
@@ -38,7 +39,7 @@ const PaymentPage = () => {
     console.log(clientSecret);
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://doctalk-server.herokuapp.com/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -102,10 +103,10 @@ const PaymentPage = () => {
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify({status: "paid"}),
+                body: JSON.stringify(paymentData),
             })
-                .then(res => res.json())
-                .then(data => {
+                .then((res) => res.json())
+                .then((data) => {
                     console.log(data);
                     if (data.acknowledged) {
                         new Swal({
@@ -113,15 +114,14 @@ const PaymentPage = () => {
                             text: "Your payment successfully done! Please stay with us",
                             icon: "success",
                         });
-                    }
-                    else {
+                    } else {
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
                             text: `${intentError.message}`,
                         });
                     }
-                })
+                });
         }
     };
 
