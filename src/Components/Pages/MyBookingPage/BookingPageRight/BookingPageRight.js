@@ -1,8 +1,12 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import React from "react";
+import useFetch from "../../../CustomHooks/useFetch";
 import "./BookingPageRight.css";
 
 const BookingPageRight = () => {
+    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/bookings`);
+    console.log(data);
+
     return (
         <Grid item xs={4} sm={8} md={8}>
             <Box>
@@ -15,15 +19,38 @@ const BookingPageRight = () => {
                     <div style={{ width: "20%" }}>Payment Status</div>
                 </Box>
                 <Box className="boooking-div">
-                {Array.from(Array(10)).map((_, index) => (
-                    <Box class="booking-table">
-                        <div style={{ width: "20%" }}>4223512668745126765156874</div>
-                        <div style={{ width: "20%" }}>Body Sergery</div>
-                        <div style={{ width: "20%" }}>Jaznan Abdullah</div>
-                        <div style={{ width: "20%" }}>23-12-2022</div>
-                        <div style={{ width: "20%" }}>Pending</div>
-                    </Box>
-                ))}
+                    {data.length === 0 ? (
+                        <h2>You have no Booking</h2>
+                    ) : (
+                        data.map((booking) => {
+                            const { _id, doctorName, serviceName, date, status } = booking;
+                            return (
+                                <Box class="booking-table">
+                                    <div style={{ width: "20%" }}>{_id}</div>
+                                    <div style={{ width: "20%" }}>{serviceName}</div>
+                                    <div style={{ width: "20%" }}>{doctorName}</div>
+                                    <div style={{ width: "20%" }}>23-{date}</div>
+                                    {status === "paid" ? (
+                                        <div style={{ width: "20%", color: "green" }}>Paid</div>
+                                    ) : (
+                                        <div style={{ width: "20%" }}>
+                                            <Button
+                                                variant="outlined"
+                                                color="error"
+                                                style={{
+                                                    padding: "2px",
+                                                    fontSize: "10px",
+                                                    fontWeight: "bold",
+                                                }}
+                                            >
+                                                Not Paid <br /> click me to pay
+                                            </Button>
+                                        </div>
+                                    )}
+                                </Box>
+                            );
+                        })
+                    )}
                 </Box>
             </Box>
         </Grid>

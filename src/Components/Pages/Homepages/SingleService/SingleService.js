@@ -16,10 +16,9 @@ import useFetch from "./../../../CustomHooks/useFetch";
 import { Link } from "react-router-dom";
 
 const SingleService = () => {
-    const { data, loading, error } = useFetch("http://localhost:5000/api/services", {
-        mode: 'no-cors',
+    const { data, loading, error } = useFetch("https://doctalk-server.herokuapp.com/api/services", {
+        mode: "no-cors",
     });
-    
 
     const override = css`
         display: block;

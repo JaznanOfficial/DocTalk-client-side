@@ -8,7 +8,9 @@ import "../Homepages/SingleService/SingleService.css";
 
 const DoctorsPage = () => {
     const { category } = useParams();
-    const { data, loading, error } = useFetch(`http://localhost:5000/doctors/${category}`);
+    const { data, loading, error } = useFetch(
+        `https://doctalk-server.herokuapp.com/doctors/${category}`
+    );
     console.log(data);
 
     const override = css`
@@ -38,8 +40,12 @@ const DoctorsPage = () => {
                             <Grid item xs={4} sm={4} md={3}>
                                 <Card
                                     sx={{ maxWidth: 200 }}
-                                    style={{ padding: "20px", borderRadius: "20px", margin:'0 auto',
-                                height:'435px' }}
+                                    style={{
+                                        padding: "20px",
+                                        borderRadius: "20px",
+                                        margin: "0 auto",
+                                        height: "435px",
+                                    }}
                                     className="card"
                                 >
                                     <Box>
