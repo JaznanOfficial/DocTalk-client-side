@@ -1,11 +1,17 @@
 import { Box, Button, Grid } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import useFetch from "../../../CustomHooks/useFetch";
 import "./BookingPageRight.css";
 
 const BookingPageRight = () => {
-    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/bookings`);
+    const { data, loading, error } = useFetch(`http://localhost:5000/bookings`);
     console.log(data);
+    // const navigate = useNavigate();
+
+    // const navigateHandler = (_id) => { 
+    //     return Navigate(`/payment/${_id}`)
+    // }
 
     return (
         <Grid item xs={4} sm={8} md={8}>
@@ -33,18 +39,11 @@ const BookingPageRight = () => {
                                     {status === "paid" ? (
                                         <div style={{ width: "20%", color: "green" }}>Paid</div>
                                     ) : (
-                                        <div style={{ width: "20%" }}>
-                                            <Button
-                                                variant="outlined"
-                                                color="error"
-                                                style={{
-                                                    padding: "2px",
-                                                    fontSize: "10px",
-                                                    fontWeight: "bold",
-                                                }}
-                                            >
-                                                Not Paid <br /> click me to pay
-                                            </Button>
+                                        <div style={{ width: "20%",padding: "2px",
+                                        fontSize: "10px",
+                                        fontWeight: "bold", color:'red' }}>
+                                            
+                                                Not Paid 
                                         </div>
                                     )}
                                 </Box>

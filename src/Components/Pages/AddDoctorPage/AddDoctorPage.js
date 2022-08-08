@@ -45,7 +45,7 @@ const AddDoctorPage = () => {
         const doctorData = { name, email, specialized, location, fees, gender };
         console.log(e.target);
 
-        fetch(`https://doctalk-server.herokuapp.com/api/add-doctor`, {
+        fetch(`http://localhost:5000/api/add-doctor`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
