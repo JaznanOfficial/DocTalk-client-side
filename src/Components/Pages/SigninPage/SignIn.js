@@ -39,7 +39,7 @@ const SignIn = () => {
     const location = useLocation();
     const navigateUrl = location?.state?.from || "/home";
 
-    const { signInWithGoogle, setLoading, error, setError, setUser,signInWithEmail, user } = useFirebase();
+    const { signInWithGoogle, signInWithGithub,signInWithTwitter,signInWithFacebook, setLoading, error, setError, setUser,signInWithEmail, user } = useFirebase();
 
     // email password authentication-------------------------------------->
 
@@ -71,7 +71,7 @@ const SignIn = () => {
                     icon: "error",
                 });
             })
-            setLoading(false);
+            // setLoading(false);
         }
     };
 
@@ -81,7 +81,7 @@ const SignIn = () => {
             .then((userCredintial) => {
                 setUser(userCredintial.user);
                 navigate(navigateUrl);
-                setLoading(false);
+                
             })
             .catch((err) => {
                 setError(err.message);
@@ -92,8 +92,73 @@ const SignIn = () => {
                     icon: "error",
                 });
             })
-            .finally(() => {});
+                .finally(() => {
+                    setLoading(false);
+            });
     };
+
+    // github sign in method------------------------------->
+
+    const githubSignIn = () => { 
+        signInWithGithub()
+        .then((userCredintial) => {
+            setUser(userCredintial.user);
+            console.log(user);
+            navigate(navigateUrl);
+            
+        }).catch((err) => {
+            setError(err.message);
+            new Swal({
+                title: "Oops!",
+                text: err.message,
+                icon: "error",
+            });
+        }).finally(() => {
+            setLoading(false);
+        });
+    }
+
+    // twitter sign in method------------------------------->
+
+    const twitterSignIn = () => { 
+        signInWithTwitter()
+        .then((userCredintial) => {
+            setUser(userCredintial.user);
+            console.log(user);
+            navigate(navigateUrl);
+            
+        }).catch((err) => {
+            setError(err.message);
+            new Swal({
+                title: "Oops!",
+                text: err.message,
+                icon: "error",
+            });
+        }).finally(() => {
+            setLoading(false);
+        });
+    }
+
+    // facebook sign in method------------------------------->
+
+    const facebookSignIn = () => { 
+        signInWithFacebook()
+        .then((userCredintial) => {
+            setUser(userCredintial.user);
+            console.log(user);
+            navigate(navigateUrl);
+            
+        }).catch((err) => {
+            setError(err.message);
+            new Swal({
+                title: "Oops!",
+                text: err.message,
+                icon: "error",
+            });
+        }).finally(() => {
+            setLoading(false);
+        });
+    }
 
     return (
         <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>
@@ -221,6 +286,7 @@ const SignIn = () => {
                                 cursor: "pointer",
                                 textTransform: "none",
                             }}
+                            onClick={githubSignIn}
                         >
                             <i className="fa-brands fa-github"></i>
                         </Button>
@@ -240,6 +306,7 @@ const SignIn = () => {
                                 cursor: "pointer",
                                 textTransform: "none",
                             }}
+                            onClick={twitterSignIn}
                         >
                             <i className="fa-brands fa-twitter"></i>
                         </Button>
@@ -259,6 +326,7 @@ const SignIn = () => {
                                 cursor: "pointer",
                                 textTransform: "none",
                             }}
+                            onClick={facebookSignIn}
                         >
                             <i className="fa-brands fa-facebook-f"></i>
                         </Button>

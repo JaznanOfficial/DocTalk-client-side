@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import initializeConfigue from '../../Firebase/Firebase.init';
-import { getAuth,GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signOut, onAuthStateChanged,updateProfile, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth,GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signOut, onAuthStateChanged,updateProfile, signInWithEmailAndPassword,GithubAuthProvider,TwitterAuthProvider,FacebookAuthProvider } from "firebase/auth";
 import { useEffect } from 'react';
 
 
@@ -9,6 +9,9 @@ initializeConfigue();
 const useFirebase = () => {
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+    const twitterProvider = new TwitterAuthProvider();
+    const facebookProvider = new FacebookAuthProvider();
 
     const [user, setUser] = useState({});
     const [error,setError] = useState('');
@@ -27,6 +30,18 @@ const useFirebase = () => {
 
     const signInWithGoogle = () => { 
         return signInWithPopup(auth, googleProvider);
+    }
+
+    const signInWithGithub = () => { 
+        return signInWithPopup(auth, githubProvider);
+    }
+
+    const signInWithTwitter = () => { 
+        return signInWithPopup(auth, twitterProvider);
+    }
+
+    const signInWithFacebook = () => { 
+        return signInWithPopup(auth, facebookProvider);
     }
 
     const logOut = () => { 
@@ -70,6 +85,9 @@ const useFirebase = () => {
         signUpWithEmailAndPasseord,
         signInWithEmail,
         signInWithGoogle,
+        signInWithGithub,
+        signInWithTwitter,
+        signInWithFacebook,
         logOut,
         updateName,
         user,
