@@ -8,13 +8,15 @@ import {
     InputLabel,
     OutlinedInput,
 } from "@mui/material";
-import React from "react";
+import React, { useRef } from "react";
 import "../SignupPage/SignUp.css";
 import logo from "../../../images/logo.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { NavLink } from "react-router-dom";
 import "./SignUp.css";
+import Swal from "sweetalert2";
+import useFirebase from "../../CustomHooks/useFirebase";
 
 const SignUp = () => {
     // ----------------------
@@ -28,6 +30,53 @@ const SignUp = () => {
     // ---------------------
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
+    };
+
+    const { setError, error, signUpWithEmailAndPasseord, setUser, user, updateName } =
+        useFirebase();
+
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+
+    const registrationHandler = (e) => {
+        e.preventDefault();
+
+        const name = nameRef.current.value;
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        if (password.length < 6) {
+            new Swal({
+                title: "Oops!",
+                text: "Password Must Be At Least 6 Characters",
+                icon: "error",
+            });
+        } else {
+            console.log({ name, email, password });
+            nameRef.current.value = "";
+            emailRef.current.value = "";
+            passwordRef.current.value = "";
+            signUpWithEmailAndPasseord(email, password)
+                .then((userCredential) => {
+                    updateName(name)
+                    // setUser(userCredential.user);
+                    console.log(userCredential.user);
+                    new Swal({
+                        title: "Hurray!",
+                        text: "Your're successfully registered. Please Login now :)",
+                        icon: "success",
+                    });
+                })
+                .catch((err) => {
+                    // setError(err.message);
+                    console.log(err.message);
+                    new Swal({
+                        title: "Oops!",
+                        text: err.message,
+                        icon: "error",
+                    });
+                });
+        }
     };
 
     return (
@@ -56,7 +105,7 @@ const SignUp = () => {
                         />
                     </Box>
                     <Box>
-                        <form>
+                        <form onSubmit={registrationHandler}>
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
@@ -67,6 +116,7 @@ const SignUp = () => {
                                     id="outlined-adornment-name"
                                     type="name"
                                     label="name"
+                                    inputRef={nameRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -80,6 +130,7 @@ const SignUp = () => {
                                     id="outlined-adornment-email"
                                     type="email"
                                     label="Email"
+                                    inputRef={emailRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -107,6 +158,7 @@ const SignUp = () => {
                                         </InputAdornment>
                                     }
                                     label="Password"
+                                    inputRef={passwordRef}
                                 />
                             </FormControl>{" "}
                             <br />

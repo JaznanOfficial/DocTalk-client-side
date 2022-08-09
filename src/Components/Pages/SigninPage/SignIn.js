@@ -8,12 +8,14 @@ import {
     InputLabel,
     OutlinedInput,
 } from "@mui/material";
-import React from "react";
+import React, { useRef, useState } from "react";
 import "../SignupPage/SignUp.css";
 import logo from "../../../images/logo.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import useFirebase from "../../CustomHooks/useFirebase";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
     // ----------------------
@@ -27,6 +29,70 @@ const SignIn = () => {
     // ---------------------
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
+    };
+
+    const emailRef = useRef();
+    const passwordRef = useRef();
+
+    // authentication-------------------------------------->
+    const navigate = useNavigate();
+    const location = useLocation();
+    const navigateUrl = location?.state?.from || "/home";
+
+    const { signInWithGoogle, setLoading, error, setError, setUser,signInWithEmail, user } = useFirebase();
+
+    // email password authentication-------------------------------------->
+
+    const signInhandler = (e) => {
+        e.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        if (password.length < 6) {
+            new Swal({
+                title: "Oops!",
+                text: "Password Must Be At Least 6 Characters",
+                icon: "error",
+            });
+        }
+        else {
+            signInWithEmail(email, password)
+            .then((userCredintial) => {
+                setLoading(true);
+                setUser(userCredintial.user);
+                console.log(user)
+                navigate(navigateUrl);
+                
+            })
+            .catch((err) => {
+                setError(err.message);
+                new Swal({
+                    title: "Oops!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
+            setLoading(false);
+        }
+    };
+
+    // google sign in method------------------------------->
+    const googleSignIn = () => {
+            signInWithGoogle()
+            .then((userCredintial) => {
+                setUser(userCredintial.user);
+                navigate(navigateUrl);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setError(err.message);
+                // console.log(error);
+                new Swal({
+                    title: "Oops!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
+            .finally(() => {});
     };
 
     return (
@@ -53,7 +119,7 @@ const SignIn = () => {
                         />
                     </Box>
                     <Box>
-                        <form action="">
+                        <form onSubmit={signInhandler}>
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
@@ -64,6 +130,7 @@ const SignIn = () => {
                                     id="outlined-adornment-email"
                                     type="email"
                                     label="Email"
+                                    inputRef={emailRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -91,6 +158,7 @@ const SignIn = () => {
                                         </InputAdornment>
                                     }
                                     label="Password"
+                                    inputRef={passwordRef}
                                 />
                             </FormControl>{" "}
                             <br />
@@ -133,6 +201,7 @@ const SignIn = () => {
                                 cursor: "pointer",
                                 textTransform: "none",
                             }}
+                            onClick={googleSignIn}
                         >
                             <i className="fa-brands fa-google"></i>
                         </Button>

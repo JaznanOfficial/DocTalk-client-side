@@ -13,8 +13,10 @@ import logo from "../../../../images/logo.png";
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import { Button } from "@mui/material";
+import useFirebase from "../../../CustomHooks/useFirebase";
 
 const Navigation = () => {
+    const {logOut} = useFirebase();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -168,7 +170,10 @@ const Navigation = () => {
                                 >
                                     <NavLink to="profile-and-booking">Profile & Booking</NavLink>
 
-                                    <NavLink to="logout">Log Out</NavLink>
+                                    <Button
+                                        variant="outlined"
+                                        color="error"
+                                        onClick={() => logOut()}>Log Out</Button>
                                 </Box>
                             </MenuItem>
                         </Menu>
