@@ -51,9 +51,10 @@ const useFirebase = () => {
 
     // update user
 
-    const updateName = (name) => {
+    const updateName = (name,photoUrl) => {
         updateProfile(auth.currentUser, {
             displayName: name,
+            photoURL: photoUrl
         })
         .then(() => {
             // Profile updated!

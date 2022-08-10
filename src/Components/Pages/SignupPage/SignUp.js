@@ -1,4 +1,5 @@
 import {
+    Avatar,
     Box,
     Button,
     Container,
@@ -8,15 +9,16 @@ import {
     InputLabel,
     OutlinedInput,
 } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "../SignupPage/SignUp.css";
 import logo from "../../../images/logo.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "./SignUp.css";
 import Swal from "sweetalert2";
 import useFirebase from "../../CustomHooks/useFirebase";
+import { PhotoCamera } from "@mui/icons-material";
 
 const SignUp = () => {
     // ----------------------
@@ -32,6 +34,35 @@ const SignUp = () => {
         event.preventDefault();
     };
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    const navigateUrl = location?.state?.from || "/home";
+
+    // imgbb img upload process ------------------------->
+
+    const [uploadImage, setUploadImage] = useState(null);
+    const imgHandler = (e) => {
+        const image = e.target.files[0];
+        console.log(image);
+        const formData = new FormData();
+        console.log(formData);
+        formData.set("key", "9e2a769f48bf697f30e55878a0fcd0aa");
+        formData.append("image", image);
+        fetch("https://api.imgbb.com/1/upload", {
+            method: "POST",
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setUploadImage(data.data.display_url);
+                console.log(uploadImage);
+            })
+            .catch((err) => console.log(err));
+    };
+    console.log(uploadImage);
+
+    // registration process------------------------------>
     const { setError, error, signUpWithEmailAndPasseord, setUser, user, updateName } =
         useFirebase();
 
@@ -58,14 +89,15 @@ const SignUp = () => {
             passwordRef.current.value = "";
             signUpWithEmailAndPasseord(email, password)
                 .then((userCredential) => {
-                    updateName(name)
-                    // setUser(userCredential.user);
-                    console.log(userCredential.user);
+                    updateName(name, uploadImage);
+                    setUser(userCredential.user);
+                    console.log(user);
                     new Swal({
                         title: "Hurray!",
-                        text: "Your're successfully registered. Please Login now :)",
+                        text: "Your're successfully registered :)",
                         icon: "success",
                     });
+                    navigate(navigateUrl);
                 })
                 .catch((err) => {
                     // setError(err.message);
@@ -106,6 +138,28 @@ const SignUp = () => {
                     </Box>
                     <Box>
                         <form onSubmit={registrationHandler}>
+                            <Avatar
+                                alt="Remy Sharp"
+                                src={uploadImage}
+                                sx={{ width: 56, height: 56 }}
+                                style={{ margin: "0 auto", marginBottom: "10px" }}
+                            />
+                            {!uploadImage && <FormControl
+                                className="input-field"
+                                sx={{ m: 1, width: "50ch" }}
+                                variant="outlined"
+                            >
+                                <Button variant="outlined" color="error" component="label">
+                                    <PhotoCamera /> Upload your profile picture
+                                    <input
+                                        hidden
+                                        accept="image/*"
+                                        multiple
+                                        type="file"
+                                        onChange={imgHandler}
+                                    />
+                                </Button>
+                            </FormControl>}
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}
