@@ -80,6 +80,7 @@ const useFirebase = () => {
     },[])
 
 
+    console.log(user);
 
     return {
         signUpWithEmailAndPasseord,
