@@ -63,8 +63,7 @@ const SignUp = () => {
     console.log(uploadImage);
 
     // registration process------------------------------>
-    const { setError, error, signUpWithEmailAndPasseord, setUser, user, updateName } =
-        useFirebase();
+    const { setError, error, signUpWithEmailAndPasseord, setUser, user, updateName } = useAuth();
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -144,22 +143,25 @@ const SignUp = () => {
                                 sx={{ width: 56, height: 56 }}
                                 style={{ margin: "0 auto", marginBottom: "10px" }}
                             />
-                            {!uploadImage && <FormControl
-                                className="input-field"
-                                sx={{ m: 1, width: "50ch" }}
-                                variant="outlined"
-                            >
-                                <Button variant="outlined" color="error" component="label">
-                                    <PhotoCamera /> Upload your profile picture
-                                    <input
-                                        hidden
-                                        accept="image/*"
-                                        multiple
-                                        type="file"
-                                        onChange={imgHandler}
-                                    />
-                                </Button>
-                            </FormControl>}
+                            {!uploadImage && (
+                                <FormControl
+                                    className="input-field"
+                                    sx={{ m: 1, width: "50ch" }}
+                                    variant="outlined"
+                                >
+                                    <Button variant="outlined" color="error" component="label">
+                                        <PhotoCamera /> Upload your profile picture
+                                        <input
+                                            hidden
+                                            accept="image/*"
+                                            multiple
+                                            type="file"
+                                            onChange={imgHandler}
+                                            required
+                                        />
+                                    </Button>
+                                </FormControl>
+                            )}
                             <FormControl
                                 className="input-field"
                                 sx={{ m: 1, width: "50ch" }}

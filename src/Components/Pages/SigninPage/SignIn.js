@@ -16,6 +16,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import useFirebase from "../../CustomHooks/useFirebase";
 import Swal from "sweetalert2";
+import useAuth from "../../CustomHooks/useAuth";
 
 const SignIn = () => {
     // ----------------------
@@ -39,7 +40,18 @@ const SignIn = () => {
     const location = useLocation();
     const navigateUrl = location?.state?.from || "/home";
 
-    const { signInWithGoogle, signInWithGithub,signInWithTwitter,signInWithFacebook, setLoading, error, setError, setUser,signInWithEmail, user } = useFirebase();
+    const {
+        signInWithGoogle,
+        signInWithGithub,
+        signInWithTwitter,
+        signInWithFacebook,
+        setLoading,
+        error,
+        setError,
+        setUser,
+        signInWithEmail,
+        user,
+    } = useAuth();
 
     // email password authentication-------------------------------------->
 
@@ -53,35 +65,32 @@ const SignIn = () => {
                 text: "Password Must Be At Least 6 Characters",
                 icon: "error",
             });
-        }
-        else {
+        } else {
             signInWithEmail(email, password)
-            .then((userCredintial) => {
-                setLoading(true);
-                setUser(userCredintial.user);
-                console.log(user)
-                navigate(navigateUrl);
-                
-            })
-            .catch((err) => {
-                setError(err.message);
-                new Swal({
-                    title: "Oops!",
-                    text: err.message,
-                    icon: "error",
+                .then((userCredintial) => {
+                    setLoading(true);
+                    setUser(userCredintial.user);
+                    console.log(user);
+                    navigate(navigateUrl);
+                })
+                .catch((err) => {
+                    setError(err.message);
+                    new Swal({
+                        title: "Oops!",
+                        text: err.message,
+                        icon: "error",
+                    });
                 });
-            })
             // setLoading(false);
         }
     };
 
     // google sign in method------------------------------->
     const googleSignIn = () => {
-            signInWithGoogle()
+        signInWithGoogle()
             .then((userCredintial) => {
                 setUser(userCredintial.user);
                 navigate(navigateUrl);
-                
             })
             .catch((err) => {
                 setError(err.message);
@@ -92,73 +101,76 @@ const SignIn = () => {
                     icon: "error",
                 });
             })
-                .finally(() => {
-                    setLoading(false);
+            .finally(() => {
+                setLoading(false);
             });
     };
 
     // github sign in method------------------------------->
 
-    const githubSignIn = () => { 
+    const githubSignIn = () => {
         signInWithGithub()
-        .then((userCredintial) => {
-            setUser(userCredintial.user);
-            console.log(user);
-            navigate(navigateUrl);
-            
-        }).catch((err) => {
-            setError(err.message);
-            new Swal({
-                title: "Oops!",
-                text: err.message,
-                icon: "error",
+            .then((userCredintial) => {
+                setUser(userCredintial.user);
+                console.log(user);
+                navigate(navigateUrl);
+            })
+            .catch((err) => {
+                setError(err.message);
+                new Swal({
+                    title: "Oops!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
+            .finally(() => {
+                setLoading(false);
             });
-        }).finally(() => {
-            setLoading(false);
-        });
-    }
+    };
 
     // twitter sign in method------------------------------->
 
-    const twitterSignIn = () => { 
+    const twitterSignIn = () => {
         signInWithTwitter()
-        .then((userCredintial) => {
-            setUser(userCredintial.user);
-            console.log(user);
-            navigate(navigateUrl);
-            
-        }).catch((err) => {
-            setError(err.message);
-            new Swal({
-                title: "Oops!",
-                text: err.message,
-                icon: "error",
+            .then((userCredintial) => {
+                setUser(userCredintial.user);
+                console.log(user);
+                navigate(navigateUrl);
+            })
+            .catch((err) => {
+                setError(err.message);
+                new Swal({
+                    title: "Oops!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
+            .finally(() => {
+                setLoading(false);
             });
-        }).finally(() => {
-            setLoading(false);
-        });
-    }
+    };
 
     // facebook sign in method------------------------------->
 
-    const facebookSignIn = () => { 
+    const facebookSignIn = () => {
         signInWithFacebook()
-        .then((userCredintial) => {
-            setUser(userCredintial.user);
-            console.log(user);
-            navigate(navigateUrl);
-            
-        }).catch((err) => {
-            setError(err.message);
-            new Swal({
-                title: "Oops!",
-                text: err.message,
-                icon: "error",
+            .then((userCredintial) => {
+                setUser(userCredintial.user);
+                console.log(user);
+                navigate(navigateUrl);
+            })
+            .catch((err) => {
+                setError(err.message);
+                new Swal({
+                    title: "Oops!",
+                    text: err.message,
+                    icon: "error",
+                });
+            })
+            .finally(() => {
+                setLoading(false);
             });
-        }).finally(() => {
-            setLoading(false);
-        });
-    }
+    };
 
     return (
         <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>

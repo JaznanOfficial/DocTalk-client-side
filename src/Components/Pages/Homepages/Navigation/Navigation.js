@@ -14,9 +14,12 @@ import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import { Button } from "@mui/material";
 import useFirebase from "../../../CustomHooks/useFirebase";
+import useAuth from "../../../CustomHooks/useAuth";
 
 const Navigation = () => {
-    const {logOut} = useFirebase();
+    console.log(useAuth());
+    const { logOut, user } = useAuth();
+    console.log(user);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -122,7 +125,8 @@ const Navigation = () => {
                         <NavLink to="about">About Us</NavLink>
                         <NavLink to="contact">Contact us</NavLink>
                         <NavLink to="join-doctor">Join as a doctor</NavLink>
-                        <NavLink to="sign-in">
+                        {
+                            !user.auth && <NavLink to="sign-in">
                             <Button
                                 variant="contained"
                                 color="primary"
@@ -140,12 +144,14 @@ const Navigation = () => {
                                 Login
                             </Button>
                         </NavLink>
+                        }
                     </Box>
 
-                    <Box sx={{ flexGrow: { xs: 1, md: 0 } }}>
+                    {
+                        user.auth && <Box sx={{ flexGrow: { xs: 1, md: 0 } }}>
                         <Tooltip title="Open Profile">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt="Remy Sharp" src={user.photoURL} />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -173,11 +179,15 @@ const Navigation = () => {
                                     <Button
                                         variant="outlined"
                                         color="error"
-                                        onClick={() => logOut()}>Log Out</Button>
+                                        onClick={() => logOut()}
+                                    >
+                                        Log Out
+                                    </Button>
                                 </Box>
                             </MenuItem>
                         </Menu>
                     </Box>
+                    }
                 </Toolbar>
             </Container>
         </AppBar>
