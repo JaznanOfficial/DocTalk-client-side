@@ -29,7 +29,7 @@ const BookingRightSide = ({ data, error, loading }) => {
     const addressRef = useRef();
     const dateRef = useRef();
     const uid = uuid();
-    console.log(uid);
+    // console.log(uid);
 
     const handleSubmit = (e) => {
         e.preventDefault();

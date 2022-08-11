@@ -19,6 +19,7 @@ import "./SignUp.css";
 import Swal from "sweetalert2";
 import useFirebase from "../../CustomHooks/useFirebase";
 import { PhotoCamera } from "@mui/icons-material";
+import useAuth from "../../CustomHooks/useAuth";
 
 const SignUp = () => {
     // ----------------------
@@ -43,9 +44,9 @@ const SignUp = () => {
     const [uploadImage, setUploadImage] = useState(null);
     const imgHandler = (e) => {
         const image = e.target.files[0];
-        console.log(image);
+        // console.log(image);
         const formData = new FormData();
-        console.log(formData);
+        // console.log(formData);
         formData.set("key", "9e2a769f48bf697f30e55878a0fcd0aa");
         formData.append("image", image);
         fetch("https://api.imgbb.com/1/upload", {
@@ -54,13 +55,13 @@ const SignUp = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 setUploadImage(data.data.display_url);
-                console.log(uploadImage);
+                // console.log(uploadImage);
             })
             .catch((err) => console.log(err));
     };
-    console.log(uploadImage);
+    // console.log(uploadImage);
 
     // registration process------------------------------>
     const { setError, error, signUpWithEmailAndPasseord, setUser, user, updateName } = useAuth();
@@ -82,7 +83,7 @@ const SignUp = () => {
                 icon: "error",
             });
         } else {
-            console.log({ name, email, password });
+            // console.log({ name, email, password });
             nameRef.current.value = "";
             emailRef.current.value = "";
             passwordRef.current.value = "";
@@ -90,7 +91,7 @@ const SignUp = () => {
                 .then((userCredential) => {
                     updateName(name, uploadImage);
                     setUser(userCredential.user);
-                    console.log(user);
+                    // console.log(user);
                     new Swal({
                         title: "Hurray!",
                         text: "Your're successfully registered :)",
@@ -100,7 +101,7 @@ const SignUp = () => {
                 })
                 .catch((err) => {
                     // setError(err.message);
-                    console.log(err.message);
+                    // console.log(err.message);
                     new Swal({
                         title: "Oops!",
                         text: err.message,

@@ -6,12 +6,8 @@ import "./BookingPageRight.css";
 
 const BookingPageRight = () => {
     const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/bookings`);
-    console.log(data);
-    // const navigate = useNavigate();
-
-    // const navigateHandler = (_id) => {
-    //     return Navigate(`/payment/${_id}`)
-    // }
+    // console.log(data);
+    
 
     return (
         <Grid item xs={4} sm={8} md={8}>

@@ -43,7 +43,7 @@ const AddDoctorPage = () => {
         const fees = feesRef.current.value;
 
         const doctorData = { name, email, specialized, location, fees, gender };
-        console.log(e.target);
+        
 
         fetch(`https://doctalk-server.herokuapp.com/api/add-doctor`, {
             method: "POST",

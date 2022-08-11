@@ -19,7 +19,7 @@ import useAuth from "../../../CustomHooks/useAuth";
 const Navigation = () => {
     console.log(useAuth());
     const { logOut, user } = useAuth();
-    console.log(user);
+    // console.log(user);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 

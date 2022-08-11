@@ -70,7 +70,7 @@ const SignIn = () => {
                 .then((userCredintial) => {
                     setLoading(true);
                     setUser(userCredintial.user);
-                    console.log(user);
+                    // console.log(user);
                     navigate(navigateUrl);
                 })
                 .catch((err) => {
@@ -112,7 +112,7 @@ const SignIn = () => {
         signInWithGithub()
             .then((userCredintial) => {
                 setUser(userCredintial.user);
-                console.log(user);
+                // console.log(user);
                 navigate(navigateUrl);
             })
             .catch((err) => {
@@ -134,7 +134,7 @@ const SignIn = () => {
         signInWithTwitter()
             .then((userCredintial) => {
                 setUser(userCredintial.user);
-                console.log(user);
+                // console.log(user);
                 navigate(navigateUrl);
             })
             .catch((err) => {
@@ -156,7 +156,7 @@ const SignIn = () => {
         signInWithFacebook()
             .then((userCredintial) => {
                 setUser(userCredintial.user);
-                console.log(user);
+                // console.log(user);
                 navigate(navigateUrl);
             })
             .catch((err) => {

@@ -11,7 +11,7 @@ const DoctorsPage = () => {
     const { data, loading, error } = useFetch(
         `https://doctalk-server.herokuapp.com/doctors/${category}`
     );
-    console.log(data);
+    // console.log(data);
 
     const override = css`
         display: block;

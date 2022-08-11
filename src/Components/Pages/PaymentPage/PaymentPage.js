@@ -21,7 +21,7 @@ import Swal from "sweetalert2";
 
 const PaymentPage = () => {
     const { id } = useParams();
-    console.log(id);
+    // console.log(id);
     const [processing, setProcessing] = useState(false);
 
     const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
@@ -36,7 +36,7 @@ const PaymentPage = () => {
     const elements = useElements();
 
     const [{ clientSecret }, setClientSecret] = useState("");
-    console.log(clientSecret);
+    // console.log(clientSecret);
 
     useEffect(() => {
         fetch("https://doctalk-server.herokuapp.com/create-payment-intent", {
@@ -69,7 +69,7 @@ const PaymentPage = () => {
                 text: `${error.message}`,
             });
         } else {
-            console.log(paymentMethod);
+            // console.log(paymentMethod);
         }
 
         // payment intent---------------->
@@ -94,7 +94,7 @@ const PaymentPage = () => {
             });
             setProcessing(false);
         } else {
-            console.log(paymentIntent);
+            // console.log(paymentIntent);
             e.target.reset();
             setProcessing(true);
 
@@ -107,7 +107,7 @@ const PaymentPage = () => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     if (data.acknowledged) {
                         new Swal({
                             title: "Good job!",

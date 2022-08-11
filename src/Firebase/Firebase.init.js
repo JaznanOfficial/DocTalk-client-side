@@ -23,7 +23,7 @@ const initializeConfigue = () => {
 
         
     };
-    console.log(process.env);
+    // console.log(process.env);
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     getAuth(app);
