@@ -85,7 +85,8 @@ const Navigation = () => {
                                     <NavLink to="about">About Us</NavLink>
                                     <NavLink to="contact">Contact us</NavLink>
                                     <NavLink to="join-doctor">Join as a doctor</NavLink>
-                                    <NavLink to="sign-in">
+                                    {
+                                        !user.auth && <NavLink to="sign-in">
                                         <Button
                                             variant="contained"
                                             color="primary"
@@ -103,6 +104,7 @@ const Navigation = () => {
                                             Login
                                         </Button>
                                     </NavLink>
+                                    }
                                 </Box>
                             </MenuItem>
                         </Menu>
