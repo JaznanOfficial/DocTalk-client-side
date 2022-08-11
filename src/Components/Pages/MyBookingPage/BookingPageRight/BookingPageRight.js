@@ -5,11 +5,11 @@ import useFetch from "../../../CustomHooks/useFetch";
 import "./BookingPageRight.css";
 
 const BookingPageRight = () => {
-    const { data, loading, error } = useFetch(`http://localhost:5000/bookings`);
+    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/bookings`);
     console.log(data);
     // const navigate = useNavigate();
 
-    // const navigateHandler = (_id) => { 
+    // const navigateHandler = (_id) => {
     //     return Navigate(`/payment/${_id}`)
     // }
 
@@ -39,11 +39,16 @@ const BookingPageRight = () => {
                                     {status === "paid" ? (
                                         <div style={{ width: "20%", color: "green" }}>Paid</div>
                                     ) : (
-                                        <div style={{ width: "20%",padding: "2px",
-                                        fontSize: "10px",
-                                        fontWeight: "bold", color:'red' }}>
-                                            
-                                                Not Paid 
+                                        <div
+                                            style={{
+                                                width: "20%",
+                                                padding: "2px",
+                                                fontSize: "10px",
+                                                fontWeight: "bold",
+                                                color: "red",
+                                            }}
+                                        >
+                                            Not Paid
                                         </div>
                                     )}
                                 </Box>

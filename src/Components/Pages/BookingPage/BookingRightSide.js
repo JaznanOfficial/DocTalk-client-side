@@ -10,10 +10,12 @@ import {
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import uuid from "react-uuid";
+import useAuth from "../../CustomHooks/useAuth";
 import "../SignupPage/SignUp.css";
 import BookingLeftSide from "./BookingLeftSide";
 
 const BookingRightSide = ({ data, error, loading }) => {
+    const {user} = useAuth();
     const { name, specialized } = data;
     const navigate = useNavigate();
     const date = new Date();
@@ -50,7 +52,7 @@ const BookingRightSide = ({ data, error, loading }) => {
             status: "pending",
         };
 
-        fetch(`http://localhost:5000/api/booking`, {
+        fetch(`https://doctalk-server.herokuapp.com/api/booking`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -149,7 +151,9 @@ const BookingRightSide = ({ data, error, loading }) => {
                                     type="email"
                                     label="Email"
                                     inputRef={emailRef}
+                                    value={user.email}
                                     required
+                                    disabled={user.email}
                                 />
                             </FormControl>{" "}
                             <br />

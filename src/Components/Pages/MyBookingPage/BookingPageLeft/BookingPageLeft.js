@@ -16,9 +16,11 @@ import {
     Typography,
 } from "@mui/material";
 import React from "react";
+import useAuth from "../../../CustomHooks/useAuth";
 import "./BookingPageLeft.css";
 
 const BookingPageLeft = () => {
+    const {user} = useAuth();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -55,14 +57,14 @@ const BookingPageLeft = () => {
                     style={{ position: "relative", top: "-50px" }}
                 >
                     <img
-                        src="https://shreethemes.in/doctris/layouts/assets/images/client/09.jpg"
+                        src={user.photoURL}
                         class="rounded-circle shadow-md avatar avatar-md-md"
                         alt=""
                         width={"100px"}
                         height={"100px"}
                         style={{ margin: "0 auto", borderRadius: "50%" }}
                     />
-                    <h3 style={{ color: "#E12454" }}>Christopher Burrell</h3>
+                    <h3 style={{ color: "#E12454" }}>{user.displayName}</h3>
                     <hr style={{ border: "1px solid #EAE7FF" }} />
                 </Box>
 
@@ -81,7 +83,7 @@ const BookingPageLeft = () => {
                                 <i class="fa-solid fa-envelope"></i>
                             </h5>
                             <h5 style={{ marginLeft: "10px" }}>Email</h5>
-                            <h5 style={{ marginLeft: "10px", color: "gray" }}>asd@efj</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>{user.email}</h5>
                         </div>
 
                         <div style={{ display: "flex" }}>
