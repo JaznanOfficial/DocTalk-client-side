@@ -5,9 +5,8 @@ import useFetch from "../../../CustomHooks/useFetch";
 import "./BookingPageRight.css";
 
 const BookingPageRight = () => {
-    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/bookings`);
+    const { data, loading, error } = useFetch(`http://localhost:5000/bookings`);
     // console.log(data);
-    
 
     return (
         <Grid item xs={4} sm={8} md={8}>

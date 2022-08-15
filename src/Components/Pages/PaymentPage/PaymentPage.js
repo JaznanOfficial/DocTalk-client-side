@@ -21,26 +21,29 @@ import Swal from "sweetalert2";
 
 const PaymentPage = () => {
     const { id } = useParams();
-    // console.log(id);
+    console.log(id);
     const [processing, setProcessing] = useState(false);
 
-    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
+    const { data, loading, error } = useFetch(`http://localhost:5000/payment/${id}`);
     const override = css`
         display: block;
         margin: 0 auto;
         border-color: red;
     `;
+    console.log(data);
     const paymentData = data;
+    console.log(paymentData);
     const { fees } = paymentData;
     const stripe = useStripe();
     const elements = useElements();
 
     const [{ clientSecret }, setClientSecret] = useState("");
-    // console.log(clientSecret);
+    console.log(clientSecret);
 
     useEffect(() => {
-        fetch("https://doctalk-server.herokuapp.com/create-payment-intent", {
+        fetch("http://localhost:5000/create-payment-intent", {
             method: "POST",
+            // mode: "no-cors",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -48,7 +51,7 @@ const PaymentPage = () => {
         })
             .then((res) => res.json())
             .then((paymentIntentData) => setClientSecret(paymentIntentData));
-    }, [paymentData]);
+    }, [data]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -98,12 +101,13 @@ const PaymentPage = () => {
             e.target.reset();
             setProcessing(true);
 
-            fetch(`https://doctalk-server.herokuapp.com/api/booking?id=${id}`, {
+            fetch(`http://localhost:5000/api/booking?id=${id}`, {
                 method: "PUT",
+                mode: "no-cors",
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify(paymentData),
+                body: JSON.stringify(data),
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -185,7 +189,7 @@ const PaymentPage = () => {
                                                 }}
                                                 disabled={!stripe || !elements}
                                             >
-                                                Pay ${data.fees}
+                                                Pay ${paymentData.fees}
                                             </Button>
                                         )}
                                     </form>

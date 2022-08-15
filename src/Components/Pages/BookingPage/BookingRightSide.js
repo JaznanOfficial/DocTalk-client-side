@@ -15,8 +15,8 @@ import "../SignupPage/SignUp.css";
 import BookingLeftSide from "./BookingLeftSide";
 
 const BookingRightSide = ({ data, error, loading }) => {
-    const {user} = useAuth();
-    const { name, specialized } = data;
+    const { user } = useAuth();
+    const { name, specialized,fees } = data;
     const navigate = useNavigate();
     const date = new Date();
     const [today, setToday] = React.useState(date.toISOString().split("T")[0]);
@@ -49,10 +49,11 @@ const BookingRightSide = ({ data, error, loading }) => {
             address,
             date,
             uid,
+            fees,
             status: "pending",
         };
 
-        fetch(`https://doctalk-server.herokuapp.com/api/booking`, {
+        fetch(`http://localhost:5000/api/booking`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
