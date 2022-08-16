@@ -16,7 +16,7 @@ const SecondShortAbout = () => {
             <Grid item xs={4} sm={8} md={4}>
                 <Box>
                     <img
-                        src="https://medi-dove.netlify.app/img/counter/counter-icon-7.png"
+                        src="https://i.ibb.co/dkqLcBh/counter-icon-1.png"
                         alt="img not found"
                     />
                     <h1 style={{ fontSize: "3rem" }}><CountUp end={540} duration={10} />+</h1>
@@ -30,7 +30,7 @@ const SecondShortAbout = () => {
             <Grid item xs={4} sm={8} md={4}>
                 <Box>
                     <img
-                        src="https://medi-dove.netlify.app/img/counter/counter-icon-83.png"
+                        src="https://i.ibb.co/TBbqj8b/counter-icon-83.png"
                         alt="img not found"
                     />
                     <h1 style={{ fontSize: "3rem" }}><CountUp end={899} duration={10} />+</h1>
@@ -44,7 +44,7 @@ const SecondShortAbout = () => {
             <Grid item xs={4} sm={8} md={4}>
                 <Box>
                     <img
-                        src="https://medi-dove.netlify.app/img/counter/counter-icon-9.png"
+                        src="https://i.ibb.co/sjdDDg6/counter-icon-2.png"
                         alt="img not found"
                     />
                     <h1 style={{ fontSize: "3rem" }}><CountUp end={40} duration={10} />+</h1>

@@ -92,6 +92,7 @@ const SignIn = () => {
                 setUser(userCredintial.user);
                 navigate(navigateUrl);
             })
+
             .catch((err) => {
                 setError(err.message);
                 // console.log(error);
@@ -103,7 +104,9 @@ const SignIn = () => {
             })
             .finally(() => {
                 setLoading(false);
+                
             });
+        
     };
 
     // github sign in method------------------------------->
@@ -157,7 +160,7 @@ const SignIn = () => {
             .then((userCredintial) => {
                 setUser(userCredintial.user);
                 // console.log(user);
-                navigate(navigateUrl);
+                
             })
             .catch((err) => {
                 setError(err.message);
