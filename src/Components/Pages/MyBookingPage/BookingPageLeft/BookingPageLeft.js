@@ -72,7 +72,7 @@ const BookingPageLeft = () => {
 
         fetch(`https://doctalk-server.herokuapp.com/api/users?email=${email}`, {
             method: "PUT",
-            // mode: "no-cors",
+            mode: "no-cors",
             headers: {
                 "content-type": "application/json",
             },
