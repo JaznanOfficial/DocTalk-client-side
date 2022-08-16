@@ -11,6 +11,7 @@ import {
     Radio,
     RadioGroup,
     Select,
+    TextField,
 } from "@mui/material";
 import React, { useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -152,11 +153,12 @@ const AddDoctorPage = () => {
                                 sx={{ m: 1, width: "50ch" }}
                                 variant="outlined"
                             >
-                                <InputLabel htmlFor="outlined-adornment-name">Location</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-name"
-                                    type="text"
-                                    label="Location"
+                                <TextField
+                                    id="outlined-multiline-static"
+                                    label="Address"
+                                    multiline
+                                    rows={4}
+                                    defaultValue=""
                                     inputRef={locationRef}
                                     required
                                 />

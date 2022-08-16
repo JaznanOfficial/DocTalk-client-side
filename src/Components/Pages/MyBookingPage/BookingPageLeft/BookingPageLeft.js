@@ -13,14 +13,17 @@ import {
     Radio,
     RadioGroup,
     Select,
+    TextField,
     Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useRef, useState } from "react";
+import Swal from "sweetalert2";
 import useAuth from "../../../CustomHooks/useAuth";
+import useFetch from "../../../CustomHooks/useFetch";
 import "./BookingPageLeft.css";
 
 const BookingPageLeft = () => {
-    const {user} = useAuth();
+    const { user } = useAuth();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -30,10 +33,68 @@ const BookingPageLeft = () => {
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        // width: 400,
         bgcolor: "background.paper",
         boxShadow: 24,
         p: 4,
+    };
+
+    // get user data
+
+    const { data } = useFetch(`https://doctalk-server.herokuapp.com/api/users/${user.email}`);
+    const { name, email, phone, address, blood, gender: userGender } = data;
+    console.log(name, email, phone, address, blood, userGender);
+    // user data edit modal
+    const [gender, setGender] = useState("");
+
+    const handleGender = (e) => {
+        setGender(e.target.value);
+    };
+
+    const nameRef = useRef();
+    const maleRef = useRef();
+    const femaleRef = useRef();
+    const otherRef = useRef();
+    const emailRef = useRef();
+    const phoneRef = useRef();
+    const addressRef = useRef();
+    const bloodRef = useRef();
+
+    const handleUserDataEdit = (e) => {
+        e.preventDefault();
+        const name = nameRef.current.value;
+        const email = emailRef.current.value;
+        const phone = phoneRef.current.value;
+        const address = addressRef.current.value;
+        const blood = bloodRef.current.value;
+
+        const userNewData = { name, email, phone, address, blood, gender };
+        console.log(userNewData);
+
+        fetch(`https://doctalk-server.herokuapp.com/api/users?email=${email}`, {
+            method: "PUT",
+            // mode: "no-cors",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(userNewData),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // console.log(data);
+                if (data.acknowledged) {
+                    new Swal({
+                        title: "Good job!",
+                        text: "Your profile updated successfully done! Please stay with us",
+                        icon: "success",
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: `any problem occured. please try again.`,
+                    });
+                }
+            });
     };
 
     return (
@@ -75,7 +136,7 @@ const BookingPageLeft = () => {
                                 <i class="fa-solid fa-user"></i>
                             </h5>
                             <h5 style={{ marginLeft: "10px" }}>Gender</h5>
-                            <h5 style={{ marginLeft: "10px", color: "gray" }}>Female</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>{data?.gender}</h5>
                         </div>
 
                         <div style={{ display: "flex" }}>
@@ -91,7 +152,7 @@ const BookingPageLeft = () => {
                                 <i class="fa-solid fa-book-open"></i>
                             </h5>
                             <h5 style={{ marginLeft: "10px" }}>Phone No.</h5>
-                            <h5 style={{ marginLeft: "10px", color: "gray" }}>+(125) 458-8547</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>{data?.phone}</h5>
                         </div>
 
                         <div style={{ display: "flex" }}>
@@ -99,7 +160,7 @@ const BookingPageLeft = () => {
                                 <i class="fa-solid fa-italic"></i>
                             </h5>
                             <h5 style={{ marginLeft: "10px" }}>Address</h5>
-                            <h5 style={{ marginLeft: "10px", color: "gray" }}>Sydney, Australia</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>{data?.address}</h5>
                         </div>
 
                         <div style={{ display: "flex" }}>
@@ -107,7 +168,7 @@ const BookingPageLeft = () => {
                                 <i class="fa-solid fa-hand-holding-medical"></i>
                             </h5>
                             <h5 style={{ marginLeft: "10px" }}>Blood Group</h5>
-                            <h5 style={{ marginLeft: "10px", color: "gray" }}>B +</h5>
+                            <h5 style={{ marginLeft: "10px", color: "gray" }}>{data?.blood}</h5>
                         </div>
                     </div>
                     <div>
@@ -131,7 +192,7 @@ const BookingPageLeft = () => {
                         >
                             <Box sx={style} className="modal-card">
                                 <div className="right">
-                                    <form action="">
+                                    <form action="" onSubmit={handleUserDataEdit}>
                                         <FormControl
                                             className="input-field"
                                             sx={{ m: 1, width: "50ch" }}
@@ -144,11 +205,17 @@ const BookingPageLeft = () => {
                                                 id="outlined-adornment-name"
                                                 type="text"
                                                 label="name"
+                                                inputRef={nameRef}
+                                                value={user.displayName}
+                                                disabled
                                             />
                                         </FormControl>{" "}
                                         <br />
                                         <FormControl>
-                                            <FormLabel id="demo-row-radio-buttons-group-label" style={{ marginLeft: "10px" }}>
+                                            <FormLabel
+                                                id="demo-row-radio-buttons-group-label"
+                                                style={{ marginLeft: "10px" }}
+                                            >
                                                 Gender
                                             </FormLabel>
                                             <RadioGroup
@@ -156,21 +223,26 @@ const BookingPageLeft = () => {
                                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                                 name="row-radio-buttons-group"
                                                 style={{ marginLeft: "10px" }}
+                                                onChange={handleGender}
+                                                defaultValue={data?.gender}
                                             >
                                                 <FormControlLabel
                                                     value="male"
                                                     control={<Radio />}
                                                     label="Male"
+                                                    inputRef={maleRef}
                                                 />
                                                 <FormControlLabel
                                                     value="female"
                                                     control={<Radio />}
                                                     label="Female"
+                                                    inputRef={femaleRef}
                                                 />
                                                 <FormControlLabel
                                                     value="other"
                                                     control={<Radio />}
                                                     label="Other"
+                                                    inputRef={otherRef}
                                                 />
                                             </RadioGroup>
                                         </FormControl>
@@ -187,6 +259,9 @@ const BookingPageLeft = () => {
                                                 id="outlined-adornment-email"
                                                 type="email"
                                                 label="Email"
+                                                inputRef={emailRef}
+                                                value={user.email}
+                                                disabled
                                             />
                                         </FormControl>{" "}
                                         <br />
@@ -202,6 +277,8 @@ const BookingPageLeft = () => {
                                                 id="outlined-adornment-name"
                                                 type="number"
                                                 label="Phone Number"
+                                                inputRef={phoneRef}
+                                                defaultValue={data?.phone}
                                             />
                                         </FormControl>{" "}
                                         <br />
@@ -210,17 +287,23 @@ const BookingPageLeft = () => {
                                             sx={{ m: 1, width: "50ch" }}
                                             variant="outlined"
                                         >
-                                            <InputLabel htmlFor="outlined-adornment-name">
-                                                Address
-                                            </InputLabel>
-                                            <OutlinedInput
-                                                id="outlined-adornment-name"
-                                                type="text"
+                                            <TextField
+                                                id="outlined-multiline-static"
                                                 label="Address"
+                                                multiline
+                                                rows={4}
+                                                inputRef={addressRef}
+                                                defaultValue={data?.address}
                                             />
                                         </FormControl>{" "}
                                         <br />
-                                        <FormControl style={{ width: "96%", textAlign: "left", marginLeft: "10px"  }}>
+                                        <FormControl
+                                            style={{
+                                                width: "96%",
+                                                textAlign: "left",
+                                                marginLeft: "10px",
+                                            }}
+                                        >
                                             <InputLabel id="demo-simple-select-label">
                                                 Blood Group
                                             </InputLabel>
@@ -229,35 +312,20 @@ const BookingPageLeft = () => {
                                                 id="demo-simple-select"
                                                 //   value={age}
                                                 label="Blood Group"
-                                                //   onChange={handleChange}
-                                                
+                                                inputRef={bloodRef}
+                                                defaultValue={data?.blood}
                                             >
-                                                <MenuItem value={"A+"} >
-                                                    A+
-                                                </MenuItem>
-                                                <MenuItem value={"A-"}>
-                                                    A-
-                                                </MenuItem>
+                                                <MenuItem value={"A+"}>A+</MenuItem>
+                                                <MenuItem value={"A-"}>A-</MenuItem>
                                                 <MenuItem value={"B+"}>B+</MenuItem>
-                                                <MenuItem value={"B-"}>
-                                                    B-
-                                                </MenuItem>
-                                                <MenuItem value={"O+"}>
-                                                    O+
-                                                </MenuItem>
-                                                <MenuItem value={"O-"}>
-                                                    O-
-                                                </MenuItem>
-                                                <MenuItem value={"AB+"}>
-                                                    AB+
-                                                </MenuItem>
-                                                <MenuItem value={"AB-"}>
-                                                    AB-
-                                                </MenuItem>
+                                                <MenuItem value={"B-"}>B-</MenuItem>
+                                                <MenuItem value={"O+"}>O+</MenuItem>
+                                                <MenuItem value={"O-"}>O-</MenuItem>
+                                                <MenuItem value={"AB+"}>AB+</MenuItem>
+                                                <MenuItem value={"AB-"}>AB-</MenuItem>
                                             </Select>
                                         </FormControl>
                                         <br />
-                                        
                                         <Button
                                             className="sign-up-btn"
                                             type="submit"
