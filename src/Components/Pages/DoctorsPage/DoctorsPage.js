@@ -8,7 +8,9 @@ import "../Homepages/SingleService/SingleService.css";
 
 const DoctorsPage = () => {
     const { category } = useParams();
-    const { data, loading, error } = useFetch(`http://localhost:5000/doctors/${category}`);
+    const { data, loading, error } = useFetch(
+        `https://doctalk-server.herokuapp.com/doctors/${category}`
+    );
     // console.log(data);
 
     const override = css`

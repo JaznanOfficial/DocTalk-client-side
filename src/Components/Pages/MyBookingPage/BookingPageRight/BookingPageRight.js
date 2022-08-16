@@ -8,7 +8,9 @@ import "./BookingPageRight.css";
 const BookingPageRight = () => {
     const { user } = useAuth();
     const email = user.email;
-    const { data, loading, error } = useFetch(`http://localhost:5000/bookings?email=${email}`);
+    const { data, loading, error } = useFetch(
+        `https://doctalk-server.herokuapp.com/bookings?email=${email}`
+    );
     // console.log(data);
 
     return (

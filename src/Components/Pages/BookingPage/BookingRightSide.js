@@ -53,7 +53,7 @@ const BookingRightSide = ({ data, error, loading }) => {
             status: "pending",
         };
 
-        fetch(`http://localhost:5000/api/booking`, {
+        fetch(`https://doctalk-server.herokuapp.com/api/booking`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

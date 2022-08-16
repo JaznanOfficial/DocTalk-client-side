@@ -24,7 +24,7 @@ const PaymentPage = () => {
     console.log(id);
     const [processing, setProcessing] = useState(false);
 
-    const { data, loading, error } = useFetch(`http://localhost:5000/payment/${id}`);
+    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/payment/${id}`);
     const override = css`
         display: block;
         margin: 0 auto;
@@ -41,7 +41,7 @@ const PaymentPage = () => {
     console.log(clientSecret);
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://doctalk-server.herokuapp.com/create-payment-intent", {
             method: "POST",
             // mode: "no-cors",
             headers: {
@@ -101,7 +101,7 @@ const PaymentPage = () => {
             e.target.reset();
             setProcessing(true);
 
-            fetch(`http://localhost:5000/api/booking?id=${id}`, {
+            fetch(`https://doctalk-server.herokuapp.com/api/booking?id=${id}`, {
                 method: "PUT",
                 // mode: "no-cors",
                 headers: {
