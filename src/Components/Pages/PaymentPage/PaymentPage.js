@@ -103,7 +103,7 @@ const PaymentPage = () => {
 
             fetch(`http://localhost:5000/api/booking?id=${id}`, {
                 method: "PUT",
-                mode: "no-cors",
+                // mode: "no-cors",
                 headers: {
                     "content-type": "application/json",
                 },

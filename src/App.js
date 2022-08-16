@@ -47,9 +47,9 @@ function App() {
                 {<Route
                     path="/payment/:id"
                     element={
-                        // <PrivateRoute>
+                        <PrivateRoute>
                             <StripePage></StripePage>
-                        // </PrivateRoute>
+                        </PrivateRoute>
                     }
                 ></Route>}
                 <Route

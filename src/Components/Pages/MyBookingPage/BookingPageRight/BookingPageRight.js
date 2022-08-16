@@ -1,11 +1,14 @@
 import { Box, Button, Grid } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../CustomHooks/useAuth";
 import useFetch from "../../../CustomHooks/useFetch";
 import "./BookingPageRight.css";
 
 const BookingPageRight = () => {
-    const { data, loading, error } = useFetch(`http://localhost:5000/bookings`);
+    const { user } = useAuth();
+    const email = user.email;
+    const { data, loading, error } = useFetch(`http://localhost:5000/bookings?email=${email}`);
     // console.log(data);
 
     return (
@@ -30,7 +33,7 @@ const BookingPageRight = () => {
                                     <div style={{ width: "20%" }}>{_id}</div>
                                     <div style={{ width: "20%" }}>{serviceName}</div>
                                     <div style={{ width: "20%" }}>{doctorName}</div>
-                                    <div style={{ width: "20%" }}>23-{date}</div>
+                                    <div style={{ width: "20%" }}>{date}</div>
                                     {status === "paid" ? (
                                         <div style={{ width: "20%", color: "green" }}>Paid</div>
                                     ) : (
