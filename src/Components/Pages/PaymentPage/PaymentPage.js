@@ -189,7 +189,7 @@ const PaymentPage = () => {
                                                 }}
                                                 disabled={!stripe || !elements}
                                             >
-                                                Pay ${paymentData.fees}
+                                                Pay ${fees}
                                             </Button>
                                         )}
                                     </form>

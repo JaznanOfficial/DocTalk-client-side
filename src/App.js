@@ -44,14 +44,14 @@ function App() {
                         </PrivateRoute>
                     }
                 ></Route>
-                <Route
+                {<Route
                     path="/payment/:id"
                     element={
-                        <PrivateRoute>
+                        // <PrivateRoute>
                             <StripePage></StripePage>
-                        </PrivateRoute>
+                        // </PrivateRoute>
                     }
-                ></Route>
+                ></Route>}
                 <Route
                     path="/join-doctor"
                     element={

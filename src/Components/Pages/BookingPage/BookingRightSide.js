@@ -16,7 +16,7 @@ import BookingLeftSide from "./BookingLeftSide";
 
 const BookingRightSide = ({ data, error, loading }) => {
     const { user } = useAuth();
-    const { name, specialized,fees } = data;
+    const { name, specialized, fees } = data;
     const navigate = useNavigate();
     const date = new Date();
     const [today, setToday] = React.useState(date.toISOString().split("T")[0]);
