@@ -18,7 +18,7 @@
 } */
 
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 420px) {
     .footer{
         background-image: url('https://meditro.themetrades.com/react/static/media/footer.d025f458.jpg');
         height: fit-content;

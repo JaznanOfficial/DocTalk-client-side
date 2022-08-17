@@ -15,9 +15,9 @@
 
 
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 420px) {
     .sign-up{
-        width: 340px !important;
+        width: 95% !important;
        
     }
     .sign-up-box{

@@ -12,7 +12,7 @@
 }
 
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 420px) {
     
     .about-h1{
         font-size: 5rem !important;
