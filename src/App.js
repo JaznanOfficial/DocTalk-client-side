@@ -17,10 +17,21 @@ import DoctorLogin from "./Components/Pages/AddDoctorPage/DoctorLogin";
 import MyBookingPage from "./Components/Pages/MyBookingPage/MyBookingPage";
 import StripePage from "./Components/Pages/StripePage/StripePage";
 import PrivateRoute from "./Components/Pages/PrivateRoute/PrivateRoute";
+import ScrollToTop from "react-scroll-to-top";
+import chatLogo from "./images/logo.png";
+import WhatsAppWidget from "react-whatsapp-chat-widget";
+import "react-whatsapp-chat-widget/index.css";
+
 
 function App() {
     return (
         <div className="App">
+            <ScrollToTop
+                smooth
+                color="#E12454"
+                viewBox="0 0 250 250"
+                style={{right: 30, bottom: 100 }}
+            />
             <Navigation></Navigation>
             <Routes>
                 <Route path="/" element={<Homepage></Homepage>}></Route>
@@ -44,14 +55,16 @@ function App() {
                         </PrivateRoute>
                     }
                 ></Route>
-                {<Route
-                    path="/payment/:id"
-                    element={
-                        <PrivateRoute>
-                            <StripePage></StripePage>
-                        </PrivateRoute>
-                    }
-                ></Route>}
+                {
+                    <Route
+                        path="/payment/:id"
+                        element={
+                            <PrivateRoute>
+                                <StripePage></StripePage>
+                            </PrivateRoute>
+                        }
+                    ></Route>
+                }
                 <Route
                     path="/join-doctor"
                     element={
@@ -74,6 +87,8 @@ function App() {
                 <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
             </Routes>
             <Footer></Footer>
+
+            <WhatsAppWidget headerIcon={chatLogo} companyName='Cooking Bird' chatMessage='Hello! 👋🏼 welcome to DocTalk Support. How can we assist you?' phoneNo="8801643282147" autoOpen={true}  autoOpenTimer={0}  iconColor="#E12454"/>
         </div>
     );
 }

@@ -8269,6 +8269,11 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-scroll-to-top@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-scroll-to-top/-/react-scroll-to-top-3.0.0.tgz#002984419d4d10fdb5654c9e3dd3341f81209a60"
+  integrity sha512-I/k45Ujai097du59tHBbzGxN7Lyc6K8Uc3IChq6HMXaBfB8N/rrfm055T5Yv0DWfVpf6pOFaBmhD3LOfH5unGw==
+
 react-spinners@^0.12.0:
   version "0.12.0"
   resolved "https://registry.npmjs.org/react-spinners/-/react-spinners-0.12.0.tgz"
@@ -8290,6 +8295,11 @@ react-uuid@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-uuid/-/react-uuid-1.0.2.tgz#c77cea91cf38eafb1aaa7910f92621b2ed91b969"
   integrity sha512-5e0GM16uuQj9MdRJlZ0GdLC8LKMwpU9PIqYmF27s3fIV2z+rLyASTaiW4aKzSY4DyGanz+ImzsECkftwGWfAwA==
+
+react-whatsapp-chat-widget@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-whatsapp-chat-widget/-/react-whatsapp-chat-widget-1.1.1.tgz#f010524846dd73d3a15ff466c069ba8ffb3ec33d"
+  integrity sha512-Arnen0Nm0LwPjJuTsgMwGHpUH5xNfaQMp6BVA/clqyHcp8+RxYnU0dibmY3PMKsw/dRtRzKas+HOpYjsO3GA1w==
 
 react@^18.2.0:
   version "18.2.0"
