@@ -72,7 +72,6 @@ const BookingPageLeft = () => {
 
         fetch(`https://doctalk-server.herokuapp.com/api/users?email=${email}`, {
             method: "PUT",
-            mode: "no-cors",
             headers: {
                 "content-type": "application/json",
             },
@@ -80,7 +79,7 @@ const BookingPageLeft = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                setOpen(false)
                 if (data.acknowledged) {
                     new Swal({
                         title: "Good job!",
@@ -327,7 +326,6 @@ const BookingPageLeft = () => {
                                         </FormControl>
                                         <br />
                                         <Button
-                                            
                                             className="sign-up-btn"
                                             type="submit"
                                             size="small"
