@@ -80,7 +80,7 @@ const BookingPageLeft = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                // console.log(data);
+                console.log(data);
                 if (data.acknowledged) {
                     new Swal({
                         title: "Good job!",
@@ -327,6 +327,7 @@ const BookingPageLeft = () => {
                                         </FormControl>
                                         <br />
                                         <Button
+                                            
                                             className="sign-up-btn"
                                             type="submit"
                                             size="small"
