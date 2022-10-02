@@ -41,8 +41,8 @@ const BookingPageLeft = () => {
     // get user data
 
     const { data } = useFetch(`https://doctalk-server.herokuapp.com/api/users/${user.email}`);
+    console.log(data );
     const { name, email, phone, address, blood, gender: userGender } = data;
-    console.log(name, email, phone, address, blood, userGender);
     // user data edit modal
     const [gender, setGender] = useState("");
 
