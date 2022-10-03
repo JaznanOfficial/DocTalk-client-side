@@ -52,7 +52,7 @@ const DoctorsPage = () => {
                                         <img
                                             src={img}
                                             alt={``}
-                                            width={"200rem"}
+                                            width={"230rem"}
                                             style={{ borderRadius: "20px" }}
                                         />
                                     </Box>
