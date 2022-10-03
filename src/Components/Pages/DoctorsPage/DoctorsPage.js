@@ -39,12 +39,12 @@ const DoctorsPage = () => {
                         return (
                             <Grid item xs={4} sm={4} md={3}>
                                 <Card
-                                    sx={{ maxWidth: 200 }}
+                                    sx={{ maxWidth: 345 }}
                                     style={{
                                         padding: "20px",
                                         borderRadius: "20px",
                                         margin: "0 auto",
-                                        height: "435px",
+                                        height: "450px",
                                     }}
                                     className="card"
                                 >

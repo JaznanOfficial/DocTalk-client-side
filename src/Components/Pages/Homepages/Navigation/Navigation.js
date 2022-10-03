@@ -84,7 +84,7 @@ const Navigation = () => {
                                     <NavLink to="services">Services</NavLink>
                                     <NavLink to="about">About Us</NavLink>
                                     <NavLink to="contact">Contact us</NavLink>
-                                    <NavLink to="join-doctor">Join as a doctor</NavLink>
+                                    {/* <NavLink to="join-doctor">Join as a doctor</NavLink> */}
                                     {
                                         !user.auth && <NavLink to="sign-in">
                                         <Button
@@ -126,7 +126,7 @@ const Navigation = () => {
                         <NavLink to="services">Services</NavLink>
                         <NavLink to="about">About Us</NavLink>
                         <NavLink to="contact">Contact us</NavLink>
-                        <NavLink to="join-doctor">Join as a doctor</NavLink>
+                        {/* <NavLink to="join-doctor">Join as a doctor</NavLink> */}
                         {
                             !user.auth && <NavLink to="sign-in">
                             <Button
