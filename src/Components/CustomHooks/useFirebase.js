@@ -85,7 +85,7 @@ const useFirebase = () => {
             }
         });
         return () => unsubscribe;
-    }, [user, auth]);
+    }, [auth]);
 
     // console.log(user);
 
