@@ -39,7 +39,13 @@ const useFirebase = (location) => {
         return signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 setUser(result.user);
-                setLoading(false);
+                setLoading(false)
+                if (location?.state?.from) {
+                    return navigate(location?.state?.from);
+                } else {
+                    console.log(location?.state?.from);
+                    return navigate("/home");
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -50,8 +56,8 @@ const useFirebase = (location) => {
         return signInWithPopup(auth, googleProvider)
             .then((result) => {
                 setUser(result.user);
-                setLoading(false);
-                if (location?.state?.from ) {
+                setLoading(false)
+                if (location?.state?.from) {
                     return navigate(location?.state?.from);
                 } else {
                     console.log(location?.state?.from);
@@ -67,8 +73,8 @@ const useFirebase = (location) => {
         return signInWithPopup(auth, githubProvider)
             .then((result) => {
                 setUser(result.user);
-                setLoading(false);
-                if (!location?.state?.from === "") {
+                setLoading(false)
+                if (location?.state?.from) {
                     return navigate(location?.state?.from);
                 } else {
                     console.log(location?.state?.from);
@@ -84,8 +90,8 @@ const useFirebase = (location) => {
         return signInWithPopup(auth, twitterProvider)
             .then((result) => {
                 setUser(result.user);
-                setLoading(false);
-                if (!location?.state?.from === "") {
+                setLoading(false)
+                if (location?.state?.from) {
                     return navigate(location?.state?.from);
                 } else {
                     console.log(location?.state?.from);
@@ -101,8 +107,8 @@ const useFirebase = (location) => {
         return signInWithPopup(auth, facebookProvider)
         .then((result) => {
             setUser(result.user);
-            setLoading(false);
-            if (!location?.state?.from === "") {
+            setLoading(false)
+            if (location?.state?.from) {
                 return navigate(location?.state?.from);
             } else {
                 console.log(location?.state?.from);
@@ -145,6 +151,7 @@ const useFirebase = (location) => {
                 setUser(user);
                 setLoading(false);
                 console.log(user);
+                
                 
             } else {
                 setUser({});

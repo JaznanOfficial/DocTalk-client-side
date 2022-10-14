@@ -16,12 +16,12 @@ const useFetch = (url) => {
                     return res.json();
                 })
                 .then((data) => {
-                    setData(data);
                     setLoading(false);
+                    setData(data);
                 })
                 .catch((error) => {
-                    setError(error);
                     setLoading(false);
+                    setError(error);
                 });
         
     }, [url]);
