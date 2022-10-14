@@ -13,9 +13,11 @@ import "../SignupPage/SignUp.css";
 import logo from "../../../images/logo.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation, Navigate } from "react-router-dom";
 import useFirebase from "../../CustomHooks/useFirebase";
 import Swal from "sweetalert2";
+import { ClockLoader } from "react-spinners";
+import { css } from "@emotion/react";
 
 const SignIn = () => {
     // ----------------------
@@ -39,14 +41,11 @@ const SignIn = () => {
     const location = useLocation();
 
     const {
+        loading,
         signInWithGoogle,
         signInWithGithub,
         signInWithTwitter,
         signInWithFacebook,
-        setLoading,
-        error,
-        setError,
-        setUser,
         signInWithEmail,
         user,
     } = useFirebase(location);
@@ -64,36 +63,58 @@ const SignIn = () => {
                 icon: "error",
             });
         } else {
-            signInWithEmail(email, password)
+            signInWithEmail(email, password,location)
                
         }
     };
 
     // google sign in method------------------------------->
     const googleSignIn = () => {
-        signInWithGoogle();
+        signInWithGoogle(location);
     };
 
     // github sign in method------------------------------->
 
     const githubSignIn = () => {
-        signInWithGithub()
+        signInWithGithub(location)
             
     };
 
     // twitter sign in method------------------------------->
 
     const twitterSignIn = () => {
-        signInWithTwitter()
+        signInWithTwitter(location)
             
     };
 
     // facebook sign in method------------------------------->
 
     const facebookSignIn = () => {
-        signInWithFacebook()
+        signInWithFacebook(location)
             
     };
+
+    const override = css`
+        display: block;
+        margin: 0 auto;
+        border-color: red;
+    `;
+
+    if (loading) {
+        return (
+            <ClockLoader
+                color="#E12454"
+                size={"300"}
+                loading={true}
+                css={override}
+                display={"block"}
+            />
+        );
+    }
+
+    if (user?.auth) {
+        return <Navigate to={'/home'} />
+    }
 
     return (
         <Box className="sign-up" style={{ padding: "100px 10px", textAlign: "center" }}>

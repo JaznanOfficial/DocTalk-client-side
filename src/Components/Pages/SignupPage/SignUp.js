@@ -14,12 +14,13 @@ import "../SignupPage/SignUp.css";
 import logo from "../../../images/logo.png";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation, Navigate } from "react-router-dom";
 import "./SignUp.css";
 import Swal from "sweetalert2";
 import useFirebase from "../../CustomHooks/useFirebase";
 import { PhotoCamera } from "@mui/icons-material";
-
+import { ClockLoader } from "react-spinners";
+import { css } from "@emotion/react";
 
 const SignUp = () => {
     // ----------------------
@@ -62,7 +63,7 @@ const SignUp = () => {
     // console.log(uploadImage);
 
     // registration process------------------------------>
-    const { setError, error, signUpWithEmailAndPasseord, setUser, user, updateName } = useFirebase(location);
+    const { loading, signUpWithEmailAndPasseord, setUser, user, updateName } = useFirebase();
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -85,7 +86,7 @@ const SignUp = () => {
             nameRef.current.value = "";
             emailRef.current.value = "";
             passwordRef.current.value = "";
-            signUpWithEmailAndPasseord(email, password)
+            signUpWithEmailAndPasseord(email, password, location)
                 .then((userCredential) => {
                     updateName(name, uploadImage);
                     setUser(userCredential.user);
@@ -95,7 +96,6 @@ const SignUp = () => {
                         text: "Your're successfully registered :)",
                         icon: "success",
                     });
-                    
                 })
                 .catch((err) => {
                     // setError(err.message);
@@ -108,6 +108,28 @@ const SignUp = () => {
                 });
         }
     };
+
+    const override = css`
+        display: block;
+        margin: 0 auto;
+        border-color: red;
+    `;
+
+    if (loading) {
+        return (
+            <ClockLoader
+                color="#E12454"
+                size={"300"}
+                loading={true}
+                css={override}
+                display={"block"}
+            />
+        );
+    }
+
+    if (user?.auth) {
+        return <Navigate to={"/home"} />;
+    }
 
     return (
         <div

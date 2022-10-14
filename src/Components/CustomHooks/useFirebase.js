@@ -31,11 +31,11 @@ const useFirebase = (location) => {
 
     
 
-    const signUpWithEmailAndPassword = (email, password) => {
+    const signUpWithEmailAndPassword = (email, password,location) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
-    const signInWithEmail = (email, password) => {
+    const signInWithEmail = (email, password, location) => {
         return signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 setUser(result.user);
@@ -43,7 +43,7 @@ const useFirebase = (location) => {
                 if (location?.state?.from) {
                     return navigate(location?.state?.from);
                 } else {
-                    console.log(location?.state?.from);
+                    
                     return navigate("/home");
                 }
             })
@@ -52,7 +52,7 @@ const useFirebase = (location) => {
             });
     };
 
-    const signInWithGoogle = () => {
+    const signInWithGoogle = (location) => {
         return signInWithPopup(auth, googleProvider)
             .then((result) => {
                 setUser(result.user);
@@ -60,7 +60,7 @@ const useFirebase = (location) => {
                 if (location?.state?.from) {
                     return navigate(location?.state?.from);
                 } else {
-                    console.log(location?.state?.from);
+                   
                     return navigate("/home");
                 }
             })
@@ -69,7 +69,7 @@ const useFirebase = (location) => {
             });
     };
 
-    const signInWithGithub = () => {
+    const signInWithGithub = (location) => {
         return signInWithPopup(auth, githubProvider)
             .then((result) => {
                 setUser(result.user);
@@ -77,7 +77,7 @@ const useFirebase = (location) => {
                 if (location?.state?.from) {
                     return navigate(location?.state?.from);
                 } else {
-                    console.log(location?.state?.from);
+                    
                     return navigate("/home");
                 }
             })
@@ -86,7 +86,7 @@ const useFirebase = (location) => {
             });
     };
 
-    const signInWithTwitter = () => {
+    const signInWithTwitter = (location) => {
         return signInWithPopup(auth, twitterProvider)
             .then((result) => {
                 setUser(result.user);
@@ -94,7 +94,7 @@ const useFirebase = (location) => {
                 if (location?.state?.from) {
                     return navigate(location?.state?.from);
                 } else {
-                    console.log(location?.state?.from);
+                    
                     return navigate("/home");
                 }
             })
@@ -103,7 +103,7 @@ const useFirebase = (location) => {
             });
     };
 
-    const signInWithFacebook = () => {
+    const signInWithFacebook = (location) => {
         return signInWithPopup(auth, facebookProvider)
         .then((result) => {
             setUser(result.user);
@@ -111,7 +111,7 @@ const useFirebase = (location) => {
             if (location?.state?.from) {
                 return navigate(location?.state?.from);
             } else {
-                console.log(location?.state?.from);
+                
                 return navigate("/home");
             }
         })
@@ -159,7 +159,7 @@ const useFirebase = (location) => {
             }
         });
         return () => unsubscribe;
-    }, [auth,navigate,location?.state?.from]);
+    }, [auth]);
 
     // console.log(user);
 
