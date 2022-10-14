@@ -51,6 +51,12 @@ const useFirebase = (location) => {
             .then((result) => {
                 setUser(result.user);
                 setLoading(false);
+                if (location?.state?.from ) {
+                    return navigate(location?.state?.from);
+                } else {
+                    console.log(location?.state?.from);
+                    return navigate("/home");
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -62,6 +68,12 @@ const useFirebase = (location) => {
             .then((result) => {
                 setUser(result.user);
                 setLoading(false);
+                if (!location?.state?.from === "") {
+                    return navigate(location?.state?.from);
+                } else {
+                    console.log(location?.state?.from);
+                    return navigate("/home");
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -73,6 +85,12 @@ const useFirebase = (location) => {
             .then((result) => {
                 setUser(result.user);
                 setLoading(false);
+                if (!location?.state?.from === "") {
+                    return navigate(location?.state?.from);
+                } else {
+                    console.log(location?.state?.from);
+                    return navigate("/home");
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -84,6 +102,12 @@ const useFirebase = (location) => {
         .then((result) => {
             setUser(result.user);
             setLoading(false);
+            if (!location?.state?.from === "") {
+                return navigate(location?.state?.from);
+            } else {
+                console.log(location?.state?.from);
+                return navigate("/home");
+            }
         })
         .catch((error) => {
             console.log(error);
@@ -120,13 +144,8 @@ const useFirebase = (location) => {
             if (user) {
                 setUser(user);
                 setLoading(false);
-                console.log(location?.state?.from);
-                if (!location?.state?.from === "") {
-                    return navigate(location?.state?.from);
-                } else {
-                    console.log(location?.state?.from);
-                    return navigate("/home");
-                }
+                console.log(user);
+                
             } else {
                 setUser({});
                 setLoading(false);

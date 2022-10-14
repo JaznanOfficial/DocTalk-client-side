@@ -6,7 +6,7 @@ import useFirebase from "../../CustomHooks/useFirebase";
 
 const PrivateRoute = ({ children, ...rest }) => {
     const { loading, user } = useFirebase();
-    console.log(user)
+    
     const location = useLocation();
     const override = css`
         display: block;
@@ -25,6 +25,7 @@ const PrivateRoute = ({ children, ...rest }) => {
             />
         );
     }
+    console.log(user)
     return user.email ? children : <Navigate to="/sign-in" state={{ from: location }}></Navigate>;
 };
 
