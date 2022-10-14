@@ -1,8 +1,6 @@
 import { Box, Card, CardContent, Container, Grid, Rating, Typography } from "@mui/material";
 import React from "react";
-import { useParams } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
-import useFetch from "../../CustomHooks/useFetch";
 import "./BookingLeftSide.css";
 import { css } from "@emotion/react";
 

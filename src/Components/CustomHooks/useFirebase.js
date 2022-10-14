@@ -14,9 +14,10 @@ import {
     FacebookAuthProvider,
 } from "firebase/auth";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 initializeConfigue();
-const useFirebase = () => {
+const useFirebase = (location) => {
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -26,29 +27,67 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+
+    
 
     const signUpWithEmailAndPassword = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
     const signInWithEmail = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password)
+            .then((result) => {
+                setUser(result.user);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     const signInWithGoogle = () => {
-        return signInWithPopup(auth, googleProvider);
+        return signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                setUser(result.user);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     const signInWithGithub = () => {
-        return signInWithPopup(auth, githubProvider);
+        return signInWithPopup(auth, githubProvider)
+            .then((result) => {
+                setUser(result.user);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     const signInWithTwitter = () => {
-        return signInWithPopup(auth, twitterProvider);
+        return signInWithPopup(auth, twitterProvider)
+            .then((result) => {
+                setUser(result.user);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     const signInWithFacebook = () => {
-        return signInWithPopup(auth, facebookProvider);
+        return signInWithPopup(auth, facebookProvider)
+        .then((result) => {
+            setUser(result.user);
+            setLoading(false);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     };
 
     const logOut = () => {
@@ -76,16 +115,25 @@ const useFirebase = () => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setLoading(true);
+            
+            setLoading(true)
             if (user) {
                 setUser(user);
                 setLoading(false);
+                console.log(location?.state?.from);
+                if (!location?.state?.from === "") {
+                    return navigate(location?.state?.from);
+                } else {
+                    console.log(location?.state?.from);
+                    return navigate("/home");
+                }
             } else {
                 setUser({});
+                setLoading(false);
             }
         });
         return () => unsubscribe;
-    }, [user, auth]);
+    }, [auth,navigate,location?.state?.from]);
 
     // console.log(user);
 

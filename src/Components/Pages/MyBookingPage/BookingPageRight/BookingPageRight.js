@@ -1,12 +1,11 @@
 import { Box, Button, Grid } from "@mui/material";
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import useAuth from "../../../CustomHooks/useAuth";
 import useFetch from "../../../CustomHooks/useFetch";
+import useFirebase from "../../../CustomHooks/useFirebase";
 import "./BookingPageRight.css";
 
 const BookingPageRight = () => {
-    const { user } = useAuth();
+    const { user } = useFirebase();
     const email = user.email;
     const { data, loading, error } = useFetch(
         `https://doctalk-server.herokuapp.com/bookings?email=${email}`

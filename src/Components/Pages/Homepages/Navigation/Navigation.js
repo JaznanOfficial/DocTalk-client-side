@@ -14,11 +14,11 @@ import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import { Button } from "@mui/material";
 import useFirebase from "../../../CustomHooks/useFirebase";
-import useAuth from "../../../CustomHooks/useAuth";
+
 
 const Navigation = () => {
-    // console.log(useAuth());
-    const { logOut, user } = useAuth();
+    // console.log(useFirebase());
+    const { logOut, user } = useFirebase();
     // console.log(user);
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -85,26 +85,26 @@ const Navigation = () => {
                                     <NavLink to="about">About Us</NavLink>
                                     <NavLink to="contact">Contact us</NavLink>
                                     {/* <NavLink to="join-doctor">Join as a doctor</NavLink> */}
-                                    {
-                                        !user.auth && <NavLink to="sign-in">
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            style={{
-                                                margin: "0px 0px",
-                                                padding: "5px 10px",
-                                                fontSize: "15px",
-                                                backgroundColor: "#F17732",
-                                                color: "#FEF3ED",
-                                                fontWeight: "400",
-                                                cursor: "pointer",
-                                                textTransform: "none",
-                                            }}
-                                        >
-                                            Login
-                                        </Button>
-                                    </NavLink>
-                                    }
+                                    {!user.auth && (
+                                        <NavLink to="sign-in">
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                style={{
+                                                    margin: "0px 0px",
+                                                    padding: "5px 10px",
+                                                    fontSize: "15px",
+                                                    backgroundColor: "#F17732",
+                                                    color: "#FEF3ED",
+                                                    fontWeight: "400",
+                                                    cursor: "pointer",
+                                                    textTransform: "none",
+                                                }}
+                                            >
+                                                Login
+                                            </Button>
+                                        </NavLink>
+                                    )}
                                 </Box>
                             </MenuItem>
                         </Menu>
@@ -127,69 +127,71 @@ const Navigation = () => {
                         <NavLink to="about">About Us</NavLink>
                         <NavLink to="contact">Contact us</NavLink>
                         {/* <NavLink to="join-doctor">Join as a doctor</NavLink> */}
-                        {
-                            !user.auth && <NavLink to="sign-in">
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                style={{
-                                    margin: "0px 0px",
-                                    padding: "5px 10px",
-                                    fontSize: "15px",
-                                    backgroundColor: "#F17732",
-                                    color: "#FEF3ED",
-                                    fontWeight: "400",
-                                    cursor: "pointer",
-                                    textTransform: "none",
-                                }}
-                            >
-                                Login
-                            </Button>
-                        </NavLink>
-                        }
-                    </Box>
-
-                    {
-                        user.auth && <Box sx={{ flexGrow: { xs: 1, md: 0 } }}>
-                        <Tooltip title="Open Profile">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src={user.photoURL} />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: "45px" }}
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Box
-                                    sx={{ display: "flex", flexDirection: "column" }}
-                                    className="responsive-menu-bar"
+                        {!user.auth && (
+                            <NavLink to="sign-in">
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    style={{
+                                        margin: "0px 0px",
+                                        padding: "5px 10px",
+                                        fontSize: "15px",
+                                        backgroundColor: "#F17732",
+                                        color: "#FEF3ED",
+                                        fontWeight: "400",
+                                        cursor: "pointer",
+                                        textTransform: "none",
+                                    }}
                                 >
-                                    <NavLink to="profile-and-booking">Profile & Booking</NavLink>
-
-                                    <Button
-                                        variant="outlined"
-                                        color="error"
-                                        onClick={() => logOut()}
-                                    >
-                                        Log Out
-                                    </Button>
-                                </Box>
-                            </MenuItem>
-                        </Menu>
+                                    Login
+                                </Button>
+                            </NavLink>
+                        )}
                     </Box>
-                    }
+
+                    {user.auth && (
+                        <Box sx={{ flexGrow: { xs: 1, md: 0 } }}>
+                            <Tooltip title="Open Profile">
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <Avatar alt="Remy Sharp" src={user.photoURL} />
+                                </IconButton>
+                            </Tooltip>
+                            <Menu
+                                sx={{ mt: "45px" }}
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                <MenuItem onClick={handleCloseUserMenu}>
+                                    <Box
+                                        sx={{ display: "flex", flexDirection: "column" }}
+                                        className="responsive-menu-bar"
+                                    >
+                                        <NavLink to="profile-and-booking">
+                                            Profile & Booking
+                                        </NavLink>
+
+                                        <Button
+                                            variant="outlined"
+                                            color="error"
+                                            onClick={() => logOut()}
+                                        >
+                                            Log Out
+                                        </Button>
+                                    </Box>
+                                </MenuItem>
+                            </Menu>
+                        </Box>
+                    )}
                 </Toolbar>
             </Container>
         </AppBar>

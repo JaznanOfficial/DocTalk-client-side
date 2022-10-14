@@ -19,7 +19,7 @@ import "./SignUp.css";
 import Swal from "sweetalert2";
 import useFirebase from "../../CustomHooks/useFirebase";
 import { PhotoCamera } from "@mui/icons-material";
-import useAuth from "../../CustomHooks/useAuth";
+
 
 const SignUp = () => {
     // ----------------------
@@ -35,9 +35,7 @@ const SignUp = () => {
         event.preventDefault();
     };
 
-    const navigate = useNavigate();
     const location = useLocation();
-    const navigateUrl = location?.state?.from || "/home";
 
     // imgbb img upload process ------------------------->
 
@@ -64,7 +62,7 @@ const SignUp = () => {
     // console.log(uploadImage);
 
     // registration process------------------------------>
-    const { setError, error, signUpWithEmailAndPasseord, setUser, user, updateName } = useAuth();
+    const { setError, error, signUpWithEmailAndPasseord, setUser, user, updateName } = useFirebase(location);
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -97,7 +95,7 @@ const SignUp = () => {
                         text: "Your're successfully registered :)",
                         icon: "success",
                     });
-                    navigate(navigateUrl);
+                    
                 })
                 .catch((err) => {
                     // setError(err.message);

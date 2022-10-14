@@ -1,8 +1,6 @@
-import { Container, Grid } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../CustomHooks/useFetch";
-import BookingLeftSide from "./BookingLeftSide";
 import BookingRightSide from "./BookingRightSide";
 
 const BookingPage = () => {

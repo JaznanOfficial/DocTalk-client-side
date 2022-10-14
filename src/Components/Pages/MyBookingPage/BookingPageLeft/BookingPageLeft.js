@@ -18,12 +18,12 @@ import {
 } from "@mui/material";
 import React, { useRef, useState } from "react";
 import Swal from "sweetalert2";
-import useAuth from "../../../CustomHooks/useAuth";
 import useFetch from "../../../CustomHooks/useFetch";
+import useFirebase from "../../../CustomHooks/useFirebase";
 import "./BookingPageLeft.css";
 
 const BookingPageLeft = () => {
-    const { user } = useAuth();
+    const { user } = useFirebase();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -41,7 +41,7 @@ const BookingPageLeft = () => {
     // get user data
 
     const { data } = useFetch(`https://doctalk-server.herokuapp.com/api/users/${user.email}`);
-    console.log(data );
+    console.log(data);
     const { name, email, phone, address, blood, gender: userGender } = data;
     // user data edit modal
     const [gender, setGender] = useState("");
@@ -79,7 +79,7 @@ const BookingPageLeft = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                setOpen(false)
+                setOpen(false);
                 if (data.acknowledged) {
                     new Swal({
                         title: "Good job!",

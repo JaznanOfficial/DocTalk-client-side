@@ -10,12 +10,12 @@ import {
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import uuid from "react-uuid";
-import useAuth from "../../CustomHooks/useAuth";
+import useFirebase from "../../CustomHooks/useFirebase";
 import "../SignupPage/SignUp.css";
 import BookingLeftSide from "./BookingLeftSide";
 
 const BookingRightSide = ({ data, error, loading }) => {
-    const { user } = useAuth();
+    const { user } = useFirebase();
     const { name, specialized, fees } = data;
     const navigate = useNavigate();
     const date = new Date();

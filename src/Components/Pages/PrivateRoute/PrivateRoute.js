@@ -1,11 +1,12 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { ClockLoader } from "react-spinners";
-import useAuth from "../../CustomHooks/useAuth";
 import { css } from "@emotion/react";
+import useFirebase from "../../CustomHooks/useFirebase";
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const { loading, user } = useAuth();
+    const { loading, user } = useFirebase();
+    console.log(user)
     const location = useLocation();
     const override = css`
         display: block;
@@ -24,7 +25,7 @@ const PrivateRoute = ({ children, ...rest }) => {
             />
         );
     }
-    return user.auth ? children : <Navigate to="/sign-in" state={{ from: location }}></Navigate>;
+    return user.email ? children : <Navigate to="/sign-in" state={{ from: location }}></Navigate>;
 };
 
 export default PrivateRoute;
