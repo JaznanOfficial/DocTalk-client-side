@@ -133,7 +133,11 @@ const useFirebase = (location) => {
             }
         });
         return () => unsubscribe;
+<<<<<<< HEAD
     }, [auth,navigate,location?.state?.from]);
+=======
+    }, [auth]);
+>>>>>>> 1a580075a5684489dae88561589b4699622f6647
 
     // console.log(user);
 
