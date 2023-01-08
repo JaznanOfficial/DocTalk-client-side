@@ -40,7 +40,7 @@ const BookingPageLeft = () => {
 
     // get user data
 
-    const { data } = useFetch(`https://doctalk-server.herokuapp.com/api/users/${user.email}`);
+    const { data } = useFetch(`https://doctalk-server.onrender.com/api/users/${user.email}`);
     console.log(data);
     const { name, email, phone, address, blood, gender: userGender } = data;
     // user data edit modal
@@ -70,7 +70,7 @@ const BookingPageLeft = () => {
         const userNewData = { name, email, phone, address, blood, gender };
         console.log(userNewData);
 
-        fetch(`https://doctalk-server.herokuapp.com/api/users?email=${email}`, {
+        fetch(`https://doctalk-server.onrender.com/api/users?email=${email}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

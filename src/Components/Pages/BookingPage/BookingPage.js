@@ -6,7 +6,7 @@ import BookingRightSide from "./BookingRightSide";
 const BookingPage = () => {
     const { id } = useParams();
 
-    const { data, loading, error } = useFetch(`https://doctalk-server.herokuapp.com/booking/${id}`);
+    const { data, loading, error } = useFetch(`https://doctalk-server.onrender.com/booking/${id}`);
     // console.log(data);
     return <BookingRightSide data={data} loading={loading} error={error}></BookingRightSide>;
 };

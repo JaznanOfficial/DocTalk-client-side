@@ -10,7 +10,7 @@ const BookingPageRight = () => {
     const { user } = useFirebase();
     const email = user.email;
     const { data, loading, error } = useFetch(
-        `https://doctalk-server.herokuapp.com/bookings?email=${email}`
+        `https://doctalk-server.onrender.com/bookings?email=${email}`
     );
     const bookingData = data
     console.log(bookingData);
